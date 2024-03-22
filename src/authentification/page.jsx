@@ -3,6 +3,7 @@ import SpinnerIcon from "@/components/icons";
 import { Button } from "../components/ui/button";
 import { Input } from "../components/ui/input";
 import { cn } from "@/lib/utils";
+import { Link, useNavigate } from "react-router-dom";
 
 function Login({ onLogin, className, ...props }) {
   const [isLoading, setIsLoading] = useState(false);
@@ -10,7 +11,12 @@ function Login({ onLogin, className, ...props }) {
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
+  const navigate = useNavigate();
 
+  // Function Handle navigation
+  const handleNavigation = () => {
+    navigate("/Dashboard");
+  };
   // Fonction pour gérer la soumission du formulaire
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -23,6 +29,7 @@ function Login({ onLogin, className, ...props }) {
       setError("Email or password is incorrect");
     }
   };
+
   const togglePasswordVisibility = () => {
     setShowPassword((prevShowPassword) => !prevShowPassword);
   };
@@ -30,13 +37,10 @@ function Login({ onLogin, className, ...props }) {
   const onSubmit = async (event) => {
     event.preventDefault();
     setIsLoading(true);
-
-    // Simulation d'une requête de connexion (remplacez cela par votre logique de connexion réelle)
     setTimeout(() => {
-      // Appeler la fonction de connexion passée en tant que prop
-      onLogin(email, password);
+      handleNavigation();
       setIsLoading(false);
-    }, 3000);
+    }, 2000);
   };
 
   return (
@@ -124,6 +128,7 @@ function Login({ onLogin, className, ...props }) {
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                     />
+
                     <button
                       type="button"
                       className="absolute inset-y-0 right-0 flex items-center pr-2"
@@ -154,6 +159,7 @@ function Login({ onLogin, className, ...props }) {
                       )}
                     </button>
                   </div>
+
                   <Button disabled={isLoading}>
                     {isLoading ? (
                       <SpinnerIcon
@@ -167,14 +173,10 @@ function Login({ onLogin, className, ...props }) {
                   </Button>
                 </div>
               </form>
+
               <div className="relative">
                 <div className="absolute inset-0 flex items-center">
                   <span className="w-full border-t" />
-                </div>
-                <div className="relative flex justify-center text-xs uppercase">
-                  <span className="bg-background px-2 text-muted-foreground">
-                    Or continue with
-                  </span>
                 </div>
               </div>
             </div>
