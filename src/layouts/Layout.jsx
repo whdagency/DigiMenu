@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { Outlet } from "react-router-dom";
+import React, { useState, useEffect, useContext, createContext } from "react";
+import { Outlet, useNavigate } from "react-router-dom";
 import Sidebar, { SidebarContext, SidebarItem } from "../pages/SideBar.jsx";
 import { BiDrink } from "react-icons/bi";
 import { BiDish } from "react-icons/bi";
@@ -8,7 +8,6 @@ import { RiPieChartLine } from "react-icons/ri";
 import { LayoutDashboard, Settings } from "lucide-react";
 import Login from "../authentification/page.jsx";
 import "../index.css";
-import DashboardPage from "../pages/dashboard/page.jsx";
 
 function Layout() {
   const [expanded, setExpanded] = useState(true);
@@ -20,6 +19,8 @@ function Layout() {
   };
 
   const [authenticated, setAuthenticated] = useState(false); // État d'authentification
+  const navigate = useNavigate(); // Utiliser la fonction de navigation
+  // const { expanded } = useContext(SidebarContext);
 
   useEffect(() => {
     // Vérifiez si l'utilisateur est déjà authentifié lors du chargement de la page
@@ -29,8 +30,17 @@ function Layout() {
     }
   }, []);
 
+  // Si l'utilisateur n'est pas authentifié, afficher la page de connexion
+  if (!authenticated) {
+    return <Login onLogin={() => setAuthenticated(true)} />;
+  }
+
+  console.log(expanded);
   return (
     <>
+      {/* <Login/> */}
+      {/* {!authenticated && <Login onLogin={() => setAuthenticated(true)} />}
+    {authenticated && ( */}
       <SidebarContext.Provider
         value={{ expanded, setExpanded, selectedItem, handleItemClick }}
       >
@@ -176,16 +186,19 @@ function Layout() {
               />
             </Sidebar>
 
+            {/* ${expanded ? "ml-64" : "ml-16"} */}
+
             <main
               className={`p-4 col-span-1 w-full ${
                 expanded ? "ml-64" : "ml-16"
               } transition-all duration-200`}
             >
-              <DashboardPage/>
+              <Outlet />
             </main>
           </div>
         </header>
       </SidebarContext.Provider>
+      {/* )} */}
     </>
   );
 }
