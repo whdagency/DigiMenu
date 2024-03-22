@@ -69,9 +69,11 @@ export function SidebarItem({ icon, text }) {
   return (
     <li
       onClick={handleClick}
-      className={`relative flex  justify-stretch items-center py-2 px-3 my-1 font-medium cursor-pointer rounded-[0.75rem] ${
+      className={`relative flex ${
+        expanded ? "justify-stretch" : "justify-center"
+      } items-center py-2 px-3 my-1 font-medium cursor-pointer rounded-[0.75rem] ${
         isItemSelected ? "bg-black text-white" : "bg-transparent text-black"
-      } transition-colors duration-200 ease-in-out ${
+      } transition-all duration-200 ease-in-out ${
         !isItemSelected && expanded ? "hover:bg-gray-200 hover:text-black" : ""
       }`}
     >

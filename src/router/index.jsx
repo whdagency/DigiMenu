@@ -5,15 +5,16 @@ import Login from "../authentification/page";
 
 export const router = createBrowserRouter([
   {
-    element: <Layout />,
+    path: "/",
     children: [
       {
-        path: "/login",
+        path: "/Login",
         element: <Login />,
       },
       {
-        path: "/dashboard",
-        element: <Dashboard />,
+        path: "/Dashboard",
+        element: <Layout />,
+        children: [{ index: true, element: <Dashboard /> }],
       },
     ],
   },

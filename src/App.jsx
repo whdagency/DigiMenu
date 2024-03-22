@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Login from './authentification/page';
-import DashboardPage from "./pages/dashboard/page";
-import Layout from './layouts/Layout';
+import { useState } from "react";
+// import './App.css'
+import { RouterProvider } from "react-router-dom";
+import { router } from "./router/index";
+import Login from "./authentification/page";
 
 function App() {
     const [authenticated, setAuthenticated] = useState(false);

@@ -3,6 +3,7 @@ import SpinnerIcon from "@/components/icons";
 import { Button } from "../components/ui/button";
 import { Input } from "../components/ui/input";
 import { cn } from "@/lib/utils";
+import { Link, useNavigate } from "react-router-dom";
 
 function Login({ onLogin, className, ...props }) {
   const [isLoading, setIsLoading] = useState(false);
@@ -10,35 +11,33 @@ function Login({ onLogin, className, ...props }) {
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
+  const navigate = useNavigate();
 
-
-//   const handleSubmit = (e) => {
-//     e.preventDefault();
-//     if (email === "admin@gmail.com" && password === "123456") {
-//       onLogin(email, password);
-//       setIsLoading(true);
-//       setTimeout(() => {
-//         setIsLoading(false);
-//       }, 3000);
-//     } else {
-//       setError("Email or password is incorrect");
-//     }
-//   };
-
+  // Fonction pour gérer la soumission du formulaire
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Vérifier les identifiants
+    if (email === "admin@gmail.com" && password === "123456") {
+      // Authentification réussie, appeler la fonction onLogin fournie par le parent
+      onLogin();
+      console.log(tru);
+    } else {
+      setError("Email or password is incorrect");
+    }
+  };
   const togglePasswordVisibility = () => {
     setShowPassword((prevShowPassword) => !prevShowPassword);
   };
   const onSubmit = async (event) => {
     event.preventDefault();
-    if (email === "admin@gmail.com" && password === "123456") {
+    setIsLoading(true);
+
+    // Simulation d'une requête de connexion (remplacez cela par votre logique de connexion réelle)
+    setTimeout(() => {
+      // Appeler la fonction de connexion passée en tant que prop
       onLogin(email, password);
-      setIsLoading(true);
-      setTimeout(() => {
-        setIsLoading(false);
-      }, 3000);
-    } else {
-      setError("Email or password is incorrect");
-    }
+      setIsLoading(false);
+    }, 3000);
   };
 
 
@@ -127,6 +126,7 @@ function Login({ onLogin, className, ...props }) {
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                     />
+
                     <button
                       type="button"
                       className="absolute inset-y-0 right-0 flex items-center pr-2"
@@ -157,6 +157,7 @@ function Login({ onLogin, className, ...props }) {
                       )}
                     </button>
                   </div>
+
                   <Button disabled={isLoading}>
                     {isLoading ? (
                       <SpinnerIcon
@@ -170,14 +171,10 @@ function Login({ onLogin, className, ...props }) {
                   </Button>
                 </div>
               </form>
+
               <div className="relative">
                 <div className="absolute inset-0 flex items-center">
                   <span className="w-full border-t" />
-                </div>
-                <div className="relative flex justify-center text-xs uppercase">
-                  <span className="bg-background px-2 text-muted-foreground">
-                    Or continue with
-                  </span>
                 </div>
               </div>
             </div>
