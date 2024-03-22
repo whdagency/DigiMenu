@@ -1,16 +1,16 @@
-import React ,{useState} from 'react';
+import React, { useContext, useState } from "react";
 
 import { Button } from "../../components/ui/button";
 import {
-    DropdownMenu,
-    DropdownMenuContent,
-    DropdownMenuGroup,
-    DropdownMenuItem,
-    DropdownMenuLabel,
-    DropdownMenuSeparator,
-    DropdownMenuShortcut,
-    DropdownMenuTrigger,
-  } from "../../components/ui/dropdown-menu"
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuShortcut,
+  DropdownMenuTrigger,
+} from "../../components/ui/dropdown-menu";
 import {
   Avatar,
   AvatarFallback,
@@ -31,26 +31,27 @@ import {
   TabsList,
   TabsTrigger,
 } from "../../components/ui/tabs";
-import Overview  from "./components/overview";
+import Overview from "./components/overview";
 import { RecentSales } from "./components/recent-sales";
 import TeamSwitcher from "./components/team-switcher";
 import UserNav from "./components/user-nav";
 import {
-    Dialog,
-    DialogContent,
-    DialogDescription,
-    DialogHeader,
-    DialogTitle,
-    DialogTrigger,
-    DialogFooter
-  } from "../../components/ui/dialog"
-import  LineChartpage  from './components/lineChart';
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+  DialogFooter,
+} from "../../components/ui/dialog";
+import LineChartpage from "./components/lineChart";
 
 function DashboardPage() {
-    const [qrValue,setQrValue] =useState();
-    const defaultPageURL = 'https://votre-domaine.com/page-par-defaut';
+  const [qrValue, setQrValue] = useState();
+
+  const defaultPageURL = "https://votre-domaine.com/page-par-defaut";
   return (
-    <>
+    <div className="">
       <div className="md:hidden">
         <img
           src="/examples/dashboard-light.png"
@@ -63,63 +64,94 @@ function DashboardPage() {
           className="hidden dark:block"
         />
       </div>
+
       <div className="hidden flex-col md:flex">
         <div className="border-b ">
           <div className="flex h-16 items-center px-4">
-
-          <div className="ml-auto flex items-center space-x-8" dir="rtl">
-            <UserNav />
-            <div className="w-1"></div>
-            <Dialog>
-            <DialogTrigger className='flex justify-center'><FaLink size={25} /></DialogTrigger>
-            <DialogContent>
-                <DialogHeader>
-                <DialogTitle style={{ display: 'flex', alignItems: 'center'}}>
-                        <span style={{ marginRight: '0.5rem' }}>Your Menu</span> <MdRestaurantMenu size={20}/>
+            <div className="ml-auto flex items-center space-x-8" dir="rtl">
+              <UserNav />
+              <div className="w-1"></div>
+              <Dialog>
+                <DialogTrigger className="flex justify-center">
+                  <FaLink size={25} />
+                </DialogTrigger>
+                <DialogContent>
+                  <DialogHeader>
+                    <DialogTitle
+                      style={{ display: "flex", alignItems: "center" }}
+                    >
+                      <span style={{ marginRight: "0.5rem" }}>Your Menu</span>{" "}
+                      <MdRestaurantMenu size={20} />
                     </DialogTitle>
                     <DialogDescription>
-                        <div className='m-5 ml-10 flex mt-10 gap-10 '>
-                            <img className="w-19 h-19 m-auto" src="https://media.istockphoto.com/id/828088276/fr/vectoriel/code-qr-illustration.jpg?s=612x612&w=0&k=20&c=3HruJu6JLgPsHstpZ5p43XkqqvP5c7AzJ7qwZ8KGgG4=" alt="" />
-                        </div>
+                      <div className="m-5 ml-10 flex mt-10 gap-10 ">
+                        <img
+                          className="w-19 h-19 m-auto"
+                          src="https://media.istockphoto.com/id/828088276/fr/vectoriel/code-qr-illustration.jpg?s=612x612&w=0&k=20&c=3HruJu6JLgPsHstpZ5p43XkqqvP5c7AzJ7qwZ8KGgG4="
+                          alt=""
+                        />
+                      </div>
                     </DialogDescription>
-                </DialogHeader>
-                <DialogFooter className="flex justify-center items-center">
+                  </DialogHeader>
+                  <DialogFooter className="flex justify-center items-center">
                     {/* Lien vers votre page par défaut avec le domaine personnalisé */}
-                    <a href={defaultPageURL} className="text-blue-500 hover:underline">{defaultPageURL}</a>
-                </DialogFooter>
-            </DialogContent>
-        </Dialog>
+                    <a
+                      href={defaultPageURL}
+                      className="text-blue-500 hover:underline"
+                    >
+                      {defaultPageURL}
+                    </a>
+                  </DialogFooter>
+                </DialogContent>
+              </Dialog>
 
-            <TeamSwitcher />
-            <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button variant="ghost" className="relative h-8 w-8 rounded-full ">
-          <Avatar className="h-8 w-8">
-            <AvatarImage src="/avatars/01.png" alt="@shadcn" />
-            <AvatarFallback><FaLink size={25} /></AvatarFallback>
-          </Avatar>
-        </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-56 flex flex-col items-center" align="end" forceMount>
-    <div className="flex items-center mt-5">
-        <MdRestaurantMenu size={20} />
-        <span style={{ marginLeft: '0.5rem' }}>Your Menu</span>
-    </div>
-    <div className='m-5 mt-10 flex gap-10'>
-        <img className="w-19 h-19" src="https://media.istockphoto.com/id/828088276/fr/vectoriel/code-qr-illustration.jpg?s=612x612&w=0&k=20&c=3HruJu6JLgPsHstpZ5p43XkqqvP5c7AzJ7qwZ8KGgG4=" alt="" />
-    </div>
-</DropdownMenuContent>
-
-    </DropdownMenu>
+              <TeamSwitcher />
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button
+                    variant="ghost"
+                    className="relative h-8 w-8 rounded-full "
+                  >
+                    <Avatar className="h-8 w-8">
+                      <AvatarImage src="/avatars/01.png" alt="@shadcn" />
+                      <AvatarFallback>
+                        <FaLink size={25} />
+                      </AvatarFallback>
+                    </Avatar>
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent
+                  className="w-56 flex flex-col items-center"
+                  align="end"
+                  forceMount
+                >
+                  <div className="flex items-center mt-5">
+                    <MdRestaurantMenu size={20} />
+                    <span style={{ marginLeft: "0.5rem" }}>Your Menu</span>
+                  </div>
+                  <div className="m-5 mt-10 flex gap-10">
+                    <img
+                      className="w-19 h-19"
+                      src="https://media.istockphoto.com/id/828088276/fr/vectoriel/code-qr-illustration.jpg?s=612x612&w=0&k=20&c=3HruJu6JLgPsHstpZ5p43XkqqvP5c7AzJ7qwZ8KGgG4="
+                      alt=""
+                    />
+                  </div>
+                </DropdownMenuContent>
+              </DropdownMenu>
             </div>
-
-
           </div>
         </div>
         <div className="flex-1 space-y-4 p-8 pt-6">
           <div className="flex items-center justify-between space-y-2">
             <h2 className="text-3xl font-bold tracking-tight">Dashboard</h2>
-            <div className="flex items-center space-x-2 " style={{backgroundColor:"black",color:"white",borderRadius:".5rem"}}>
+            <div
+              className="flex items-center space-x-2 "
+              style={{
+                backgroundColor: "black",
+                color: "white",
+                borderRadius: ".5rem",
+              }}
+            >
               {/* <Button>Download</Button> */}
             </div>
           </div>
@@ -165,9 +197,7 @@ function DashboardPage() {
                 </Card>
                 <Card>
                   <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                    <CardTitle className="text-sm font-medium">
-                      Sales
-                    </CardTitle>
+                    <CardTitle className="text-sm font-medium">Sales</CardTitle>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 24 24"
@@ -192,7 +222,9 @@ function DashboardPage() {
                 </Card>
                 <Card>
                   <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                    <CardTitle className="text-sm font-medium">Total items</CardTitle>
+                    <CardTitle className="text-sm font-medium">
+                      Total items
+                    </CardTitle>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 24 24"
@@ -243,32 +275,31 @@ function DashboardPage() {
               <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-7">
                 <Card className="col-span-4">
                   <CardHeader>
-                  <CardTitle>Overview 30d Orders</CardTitle>
-                </CardHeader>
-                <CardContent className="pl-2">
-                  <Overview />
-                </CardContent>
-              </Card>
-              <Card className="col-span-3">
-                <CardHeader>
-                  <CardTitle>Last 10 Orders</CardTitle>
-                  <CardDescription>
-                    You made 265 sales this month.
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <RecentSales />
-                </CardContent>
-              </Card>
-            </div>
-          </TabsContent>
-        </Tabs>
-<LineChartpage/>
+                    <CardTitle>Overview 30d Orders</CardTitle>
+                  </CardHeader>
+                  <CardContent className="pl-2">
+                    <Overview />
+                  </CardContent>
+                </Card>
+                <Card className="col-span-3">
+                  <CardHeader>
+                    <CardTitle>Last 10 Orders</CardTitle>
+                    <CardDescription>
+                      You made 265 sales this month.
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <RecentSales />
+                  </CardContent>
+                </Card>
+              </div>
+            </TabsContent>
+          </Tabs>
+          <LineChartpage />
+        </div>
       </div>
-
     </div>
-  </>
-);
-};
+  );
+}
 
 export default DashboardPage;

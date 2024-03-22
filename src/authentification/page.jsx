@@ -9,19 +9,19 @@ function Login({ onLogin, className, ...props }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
 
   // Fonction pour gérer la soumission du formulaire
   const handleSubmit = (e) => {
-      e.preventDefault();
-      // Vérifier les identifiants
-      if (email === 'admin@gmail.com' && password === '123456') {
-          // Authentification réussie, appeler la fonction onLogin fournie par le parent
-          onLogin();
-          console.log(tru)
-      } else {
-          setError('Email or password is incorrect');
-      }
+    e.preventDefault();
+    // Vérifier les identifiants
+    if (email === "admin@gmail.com" && password === "123456") {
+      // Authentification réussie, appeler la fonction onLogin fournie par le parent
+      onLogin();
+      console.log(tru);
+    } else {
+      setError("Email or password is incorrect");
+    }
   };
   const togglePasswordVisibility = () => {
     setShowPassword((prevShowPassword) => !prevShowPassword);
@@ -41,7 +41,7 @@ function Login({ onLogin, className, ...props }) {
 
   return (
     <>
-           {/* <div className="md:hidden">
+      {/* <div className="md:hidden">
         <Image
           src="/examples/authentication-light.png"
           width={1280}
@@ -57,7 +57,7 @@ function Login({ onLogin, className, ...props }) {
           className="hidden dark:block"
         />
       </div> */}
-      <div className="container relative  h-screen flex-col items-center justify-center md:grid lg:max-w-none lg:grid-cols-2 lg:px-0">
+      <div className="container relative h-screen flex-col items-center justify-center md:grid lg:max-w-none lg:grid-cols-2 lg:px-0">
         {/* <Link
           href="/examples/authentication"
           className={cn(
@@ -70,7 +70,12 @@ function Login({ onLogin, className, ...props }) {
         <div className="relative hidden h-full flex-col bg-muted p-10 text-white lg:flex dark:border-r">
           <div className="absolute inset-0 bg-zinc-900" />
           <div className="relative z-20 flex items-center text-lg font-medium">
-          <div>   <h1 className='text-4xl font-bold '>gar<span className='text-blue-700'>i</span>sta</h1></div>
+            <div>
+              {" "}
+              <h1 className="text-4xl font-bold ">
+                gar<span className="text-blue-700">i</span>sta
+              </h1>
+            </div>
           </div>
           <div className="relative z-20 mt-auto">
             <blockquote className="space-y-2">
@@ -79,7 +84,6 @@ function Login({ onLogin, className, ...props }) {
                 helped me deliver stunning designs to my clients faster than
                 ever before.&rdquo;
               </p>
-
             </blockquote>
           </div>
         </div>
@@ -87,9 +91,7 @@ function Login({ onLogin, className, ...props }) {
         <div className="lg:p-8">
           <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
             <div className="flex flex-col space-y-2 text-center">
-              <h1 className="text-2xl font-semibold tracking-tight">
-                Login
-              </h1>
+              <h1 className="text-2xl font-semibold tracking-tight">Login</h1>
               <p className="text-sm text-muted-foreground">
                 Enter your email & password
               </p>
