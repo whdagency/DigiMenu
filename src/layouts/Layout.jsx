@@ -8,6 +8,7 @@ import { RiPieChartLine } from "react-icons/ri";
 import { LayoutDashboard, Settings } from "lucide-react";
 import Login from "../authentification/page.jsx";
 import "../index.css";
+import DashboardPage from "../pages/dashboard/page.jsx";
 
 function Layout() {
   const [expanded, setExpanded] = useState(true);
@@ -193,7 +194,7 @@ function Layout() {
                 expanded ? "ml-64" : "ml-16"
               } transition-all duration-200`}
             >
-              <Outlet />
+              <DashboardPage/>
             </main>
           </div>
         </header>

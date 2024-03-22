@@ -11,33 +11,36 @@ function Login({ onLogin, className, ...props }) {
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
 
-  // Fonction pour gérer la soumission du formulaire
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Vérifier les identifiants
+
+//   const handleSubmit = (e) => {
+//     e.preventDefault();
+//     if (email === "admin@gmail.com" && password === "123456") {
+//       onLogin(email, password);
+//       setIsLoading(true);
+//       setTimeout(() => {
+//         setIsLoading(false);
+//       }, 3000);
+//     } else {
+//       setError("Email or password is incorrect");
+//     }
+//   };
+
+  const togglePasswordVisibility = () => {
+    setShowPassword((prevShowPassword) => !prevShowPassword);
+  };
+  const onSubmit = async (event) => {
+    event.preventDefault();
     if (email === "admin@gmail.com" && password === "123456") {
-      // Authentification réussie, appeler la fonction onLogin fournie par le parent
-      onLogin();
-      console.log(tru);
+      onLogin(email, password);
+      setIsLoading(true);
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 3000);
     } else {
       setError("Email or password is incorrect");
     }
   };
-  const togglePasswordVisibility = () => {
-    setShowPassword((prevShowPassword) => !prevShowPassword);
-  };
 
-  const onSubmit = async (event) => {
-    event.preventDefault();
-    setIsLoading(true);
-
-    // Simulation d'une requête de connexion (remplacez cela par votre logique de connexion réelle)
-    setTimeout(() => {
-      // Appeler la fonction de connexion passée en tant que prop
-      onLogin(email, password);
-      setIsLoading(false);
-    }, 3000);
-  };
 
   return (
     <>

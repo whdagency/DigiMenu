@@ -1,7 +1,6 @@
 import * as React from "react"
 import { Slot } from "@radix-ui/react-slot"
 import { cva } from "class-variance-authority";
-
 import { cn } from "@/lib/utils"
 
 // Définition des variantes de bouton
@@ -39,8 +38,8 @@ const Button = React.forwardRef(({ className, variant, size, asChild = false, ..
   const Comp = asChild ? Slot : "button"
   return (
     <Comp
-      className={cn(buttonVariants({ variant, size, className }), "border-black")}
-      style={{ backgroundColor: "black", color: "white" }} // Style en ligne
+      className={cn(buttonVariants({ variant, size, className }), "border-black bg-black")}
+      style={{ color: "white",backgroundColor:"black" }} 
       ref={ref}
       {...props}
     />
