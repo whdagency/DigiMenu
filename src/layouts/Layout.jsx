@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext, createContext } from "react";
-import { Outlet, useNavigate } from "react-router-dom";
+import { Outlet, useNavigate ,Link} from "react-router-dom";
 import Sidebar, { SidebarContext, SidebarItem } from "../pages/SideBar.jsx";
 import { BiDrink } from "react-icons/bi";
 import { BiDish } from "react-icons/bi";
@@ -11,9 +11,9 @@ import "../index.css";
 
 function Layout() {
   const [expanded, setExpanded] = useState(true);
-  const [selectedItem, setSelectedItem] = useState("Dashboard"); // Utilisez defaultActive pour définir l'élément actif par défaut
+  const [selectedItem, setSelectedItem] = useState("Dashboard");
 
-  // Fonction pour gérer le clic sur un élément de la barre latérale
+
   const handleItemClick = (item) => {
     setSelectedItem(item === selectedItem ? null : item);
   };
@@ -47,12 +47,17 @@ function Layout() {
         <header>
           <div className="flex">
             <Sidebar>
+                <Link to="/Dashboard">
               <SidebarItem
                 icon={<LayoutDashboard size={20} />}
                 text="Dashboard"
                 active
               />
-              <SidebarItem icon={<RiPieChartLine size={20} />} text="Report" />
+              </Link>
+              <Link to="/Report">
+                <SidebarItem icon={<RiPieChartLine size={20} />} text="Report" />
+            </Link>
+
               <hr className="my-3" />
               <SidebarItem
                 icon={
@@ -93,6 +98,7 @@ function Layout() {
                 }
                 text="Menu"
               />
+              <Link to="/QrCode">
               <SidebarItem
                 icon={
                   <svg
@@ -117,6 +123,8 @@ function Layout() {
                 }
                 text="Qr Codes"
               />
+              </Link>
+
               <SidebarItem
                 icon={
                   <svg
@@ -137,6 +145,7 @@ function Layout() {
                 text="Users"
               />
               <hr className="my-3" />
+              <Link to="/Categories">
               <SidebarItem
                 icon={
                   <svg
@@ -145,26 +154,28 @@ function Layout() {
                     viewBox="0 0 24 24"
                     strokeWidth={1.5}
                     stroke="currentColor"
-                    className="w-6 h-6"
-                  >
+                    className="w-6 h-6">
                     <path
                       strokeLinecap="round"
                       strokeLinejoin="round"
-                      d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0ZM3.75 12h.007v.008H3.75V12Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm-.375 5.25h.007v.008H3.75v-.008Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z"
-                    />
+                      d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0ZM3.75 12h.007v.008H3.75V12Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm-.375 5.25h.007v.008H3.75v-.008Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z"/>
                   </svg>
                 }
                 text="Categories"
               />
+              </Link>
               <SidebarItem icon={<BiDish size={20} />} text="Dishes" />
               <SidebarItem icon={<BiDrink size={20} />} text="Drinks" />
 
               <SidebarItem icon={<BsMegaphone size={20} />} text="Promotions" />
               <hr className="my-3" />
+              <Link to="/Company">
               <SidebarItem
                 icon={<Settings size={20} />}
                 text="Restaurant Settings"
               />
+              </Link>
+              <Link to="/Profile">
               <SidebarItem
                 icon={
                   <svg
@@ -184,6 +195,8 @@ function Layout() {
                 }
                 text="Profile"
               />
+              </Link>
+
             </Sidebar>
 
             {/* ${expanded ? "ml-64" : "ml-16"} */}

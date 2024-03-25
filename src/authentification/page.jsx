@@ -13,6 +13,10 @@ function Login({ onLogin, className, ...props }) {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
+  // Function Handle navigation
+  const handleNavigation = () => {
+    navigate("/Dashboard");
+  };
   // Fonction pour gérer la soumission du formulaire
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -25,21 +29,19 @@ function Login({ onLogin, className, ...props }) {
       setError("Email or password is incorrect");
     }
   };
+
   const togglePasswordVisibility = () => {
     setShowPassword((prevShowPassword) => !prevShowPassword);
   };
+
   const onSubmit = async (event) => {
     event.preventDefault();
     setIsLoading(true);
-
-    // Simulation d'une requête de connexion (remplacez cela par votre logique de connexion réelle)
     setTimeout(() => {
-      // Appeler la fonction de connexion passée en tant que prop
-      onLogin(email, password);
+      handleNavigation();
       setIsLoading(false);
-    }, 3000);
+    }, 2000);
   };
-
 
   return (
     <>
@@ -90,7 +92,7 @@ function Login({ onLogin, className, ...props }) {
           </div>
         </div>
 
-        <div className="lg:p-8">
+        <div className="lg:p-8 pt-44">
           <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
             <div className="flex flex-col space-y-2 text-center">
               <h1 className="text-2xl font-semibold tracking-tight">Login</h1>

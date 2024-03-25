@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 
-import { Button } from "../../components/ui/button";
+import { Button } from "./../components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -10,31 +10,32 @@ import {
   DropdownMenuSeparator,
   DropdownMenuShortcut,
   DropdownMenuTrigger,
-} from "../../components/ui/dropdown-menu";
+} from "./../components/ui/dropdown-menu";
 import {
   Avatar,
   AvatarFallback,
   AvatarImage,
-} from "../../components/ui/avatar";
+} from "./../components/ui/avatar";
 import { MdRestaurantMenu } from "react-icons/md";
+import CardsStats from "./components/LineChart"
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "../../components/ui/card";
+} from "./../components/ui/card";
 import { FaLink } from "react-icons/fa6";
 import {
   Tabs,
   TabsContent,
   TabsList,
   TabsTrigger,
-} from "../../components/ui/tabs";
-import Overview from "./components/overview";
-import { RecentSales } from "./components/recent-sales";
-import TeamSwitcher from "./components/team-switcher";
-import UserNav from "./components/user-nav";
+} from "./../components/ui/tabs";
+import Overview from "../pages/dashboard/components/overview";
+import { RecentSales } from "../pages/dashboard/components/recent-sales";
+import TeamSwitcher from "../pages/dashboard/components/team-switcher";
+import UserNav from "../pages/dashboard/components/user-nav";
 import {
   Dialog,
   DialogContent,
@@ -43,10 +44,18 @@ import {
   DialogTitle,
   DialogTrigger,
   DialogFooter,
-} from "../../components/ui/dialog";
-import LineChartpage from "./components/lineChart";
-
-function DashboardPage() {
+} from "./../components/ui/dialog";
+import LineChartpage from "../pages/dashboard/components/lineChart";
+import {
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+  } from "@/components/ui/select"
+import SelectDate from "./components/SelectDate";
+import DonutChartHero from "./components/CircleChart"
+function Report() {
   const [qrValue, setQrValue] = useState();
 
   const defaultPageURL = "https://votre-domaine.com/page-par-defaut";
@@ -147,7 +156,7 @@ function DashboardPage() {
         </div>
         <div className="flex-1 space-y-4 p-8 pt-6">
           <div className="flex items-center justify-between space-y-2">
-            <h2 className="text-3xl font-bold tracking-tight">Dashboard</h2>
+            <h2 className="text-3xl font-bold tracking-tight">Report</h2>
             <div
               className="flex items-center space-x-2 "
               style={{
@@ -157,6 +166,7 @@ function DashboardPage() {
               }}
             >
               {/* <Button>Download</Button> */}
+              <SelectDate/>
             </div>
           </div>
           <Tabs defaultValue="overview" className="space-y-4">
@@ -201,7 +211,7 @@ function DashboardPage() {
                 </Card>
                 <Card>
                   <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                    <CardTitle className="text-sm font-medium">Sales</CardTitle>
+                    <CardTitle className="text-sm font-medium">Orders</CardTitle>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 24 24"
@@ -227,7 +237,7 @@ function DashboardPage() {
                 <Card>
                   <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                     <CardTitle className="text-sm font-medium">
-                      Total items
+                      Revnue
                     </CardTitle>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -253,7 +263,7 @@ function DashboardPage() {
                 <Card>
                   <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                     <CardTitle className="text-sm font-medium">
-                      Total QR Codes
+                    Performance visitors
                     </CardTitle>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -285,23 +295,15 @@ function DashboardPage() {
                     <Overview />
                   </CardContent>
                 </Card>
-                <Card className="col-span-3">
-                  <CardHeader>
-                    <CardTitle>Best Orders</CardTitle>
-                    <CardDescription>
-                      You made 265 sales this month.
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <RecentSales />
-                  </CardContent>
-                </Card>
+
+                  <CardsStats/>
+
               </div>
             </TabsContent>
           </Tabs>
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-7">
 
-          <Card className="col-span-3">
+          {/* <Card className="col-span-3">
                   <CardHeader>
                     <CardTitle>Last 10 Orders</CardTitle>
                     <CardDescription>
@@ -311,13 +313,26 @@ function DashboardPage() {
                   <CardContent>
                     <RecentSales />
                   </CardContent>
-                </Card>
+                </Card> */}
+                <DonutChartHero/>
+                {/* <LineChart/> */}
                 <LineChartpage />
             </div>
+            <Card className="col-span-9">
+                  <CardHeader>
+                    <CardTitle>The Best product</CardTitle>
+                    <CardDescription>
+                      You made 265 sales this month.
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <RecentSales />
+                  </CardContent>
+                </Card>
         </div>
       </div>
     </div>
   );
 }
 
-export default DashboardPage;
+export default Report;
