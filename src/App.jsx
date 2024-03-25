@@ -1,14 +1,16 @@
 import { useState } from "react";
 // import './App.css'
-import { RouterProvider } from "react-router-dom";
+import { RouterProvider, BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { router } from "./router/index";
 import Login from "./authentification/page";
 
 function App() {
   return (
-    <>
-      <RouterProvider router={router}></RouterProvider>
-    </>
+    <Router>
+      <Routes>
+       <Route path="/" element={<Dashboard />} />
+      </Routes>
+    <Router/>
   );
 }
 
