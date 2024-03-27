@@ -71,6 +71,7 @@ function Layout() {
                 text="Arrangement"
                 alert
               />
+              <Link to="/Menu">
               <SidebarItem
                 icon={
                   <svg
@@ -90,6 +91,7 @@ function Layout() {
                 }
                 text="Menu"
               />
+              </Link>
               <Link to="/QrCode">
               <SidebarItem
                 icon={

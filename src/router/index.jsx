@@ -17,6 +17,7 @@ import DemoPagePromotion from "../Promotions/page";
 import DemoPageOrders from "../Orders/page";
 import { Tabs } from "../components/ui/tabs";
 import TabsDemo from "../components/custom/tabs";
+import Menu from '../Menu/page'
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -40,6 +41,11 @@ export const router = createBrowserRouter([
         path: "/Orders",
         element: <Layout />,
         children: [{ index: true, element: < DemoPageOrders/> }],
+      },
+      {
+        path: "/Menu",
+        element: <Layout />,
+        children: [{ index: true, element: < Menu/> }],
       },
       {
         path: "/QrCode",
