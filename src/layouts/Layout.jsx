@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import Sidebar, { SidebarContext, SidebarItem } from "../pages/SideBar.jsx";
 import { BiDrink } from "react-icons/bi";
 import { BiDish } from "react-icons/bi";
@@ -8,6 +8,7 @@ import { RiPieChartLine } from "react-icons/ri";
 import { LayoutDashboard, Settings } from "lucide-react";
 import Login from "../authentification/page.jsx";
 import "../index.css";
+import NavBar from "../components/navBar.jsx";
 
 function Layout() {
   const [expanded, setExpanded] = useState(true);
@@ -63,25 +64,27 @@ function Layout() {
                 text="Orders"
                 alert
               />
-              <SidebarItem
-                icon={
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth={1.5}
-                    stroke="currentColor"
-                    className="w-6 h-6"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M10.5 1.5H8.25A2.25 2.25 0 0 0 6 3.75v16.5a2.25 2.25 0 0 0 2.25 2.25h7.5A2.25 2.25 0 0 0 18 20.25V3.75a2.25 2.25 0 0 0-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3"
-                    />
-                  </svg>
-                }
-                text="Menu"
-              />
+              <Link to="/Menu">
+                <SidebarItem
+                  icon={
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={1.5}
+                      stroke="currentColor"
+                      className="w-6 h-6"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M10.5 1.5H8.25A2.25 2.25 0 0 0 6 3.75v16.5a2.25 2.25 0 0 0 2.25 2.25h7.5A2.25 2.25 0 0 0 18 20.25V3.75a2.25 2.25 0 0 0-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3"
+                      />
+                    </svg>
+                  }
+                  text="Menu"
+                />
+              </Link>
               <SidebarItem
                 icon={
                   <svg
@@ -180,6 +183,7 @@ function Layout() {
                 expanded ? "ml-64" : "ml-16"
               } transition-all duration-200`}
             >
+              <NavBar />
               <Outlet />
             </main>
           </div>

@@ -1,27 +1,30 @@
 import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
 import "./SideBar.css";
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 
 // Context pour gérer l'état de la barre latérale
 export const SidebarContext = createContext();
 
+// Fonction pour récupérer l'élément sélectionné du stockage local
+const getSelectedFromLocalStorage = () => {
+  const storedItem = localStorage.getItem("selectedItem");
+  return storedItem ? storedItem : "Dashboard"; // Retourner "Dashboard" par défaut si aucun élément sélectionné n'est trouvé
+};
+
 // Context pour gérer l'état de la barre latérale
 export default function Sidebar({ children }) {
-  const { expanded, setExpanded, selectedItem, handleItemClick } =
-    useContext(SidebarContext);
-
-  // const [expanded, setExpanded] = useState(true);
-  // const [selectedItem, setSelectedItem] = useState(defaultActive); // Utilisez defaultActive pour définir l'élément actif par défaut
-
-  // // Fonction pour gérer le clic sur un élément de la barre latérale
-  // const handleItemClick = (item) => {
-  //   setSelectedItem(item === selectedItem ? null : item);
-  // };
+  const [selectedItem, setSelectedItem] = useState(getSelectedFromLocalStorage);
+  const [expanded, setExpanded] = useState(true);
 
   // Fonction pour basculer l'expansion de la barre latérale
   const toggleExpanded = () => {
     setExpanded((prevExpanded) => !prevExpanded);
   };
+
+  useEffect(() => {
+    // Sauvegarder l'élément sélectionné dans le stockage local
+    localStorage.setItem("selectedItem", selectedItem);
+  }, [selectedItem]);
 
   return (
     <aside className="fixed h-screen top-0 left-0 z-10">
@@ -46,7 +49,7 @@ export default function Sidebar({ children }) {
 
         {/* Fournir le contexte de la barre latérale aux éléments enfants */}
         <SidebarContext.Provider
-          value={{ expanded, selectedItem, handleItemClick }}
+          value={{ expanded, selectedItem, setSelectedItem }}
         >
           <ul className="flex-1 px-3">{children}</ul>
         </SidebarContext.Provider>
@@ -57,13 +60,13 @@ export default function Sidebar({ children }) {
 
 // Composant pour un élément de la barre latérale
 export function SidebarItem({ icon, text }) {
-  const { expanded, selectedItem, handleItemClick } =
+  const { expanded, selectedItem, setSelectedItem } =
     useContext(SidebarContext);
   const isItemSelected = selectedItem === text;
 
   // Fonction pour gérer le clic sur un élément de la barre latérale
   const handleClick = () => {
-    handleItemClick(text);
+    setSelectedItem(text);
   };
 
   return (

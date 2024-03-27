@@ -92,7 +92,7 @@ function Login({ onLogin, className, ...props }) {
           </div>
         </div>
 
-        <div className="lg:p-8">
+        <div className="lg:p-8 pt-44">
           <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
             <div className="flex flex-col space-y-2 text-center">
               <h1 className="text-2xl font-semibold tracking-tight">Login</h1>

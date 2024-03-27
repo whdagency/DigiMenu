@@ -1,22 +1,5 @@
 import React, { useContext, useState } from "react";
 
-import { Button } from "../../components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuShortcut,
-  DropdownMenuTrigger,
-} from "../../components/ui/dropdown-menu";
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "../../components/ui/avatar";
-import { MdRestaurantMenu } from "react-icons/md";
 import {
   Card,
   CardContent,
@@ -24,7 +7,7 @@ import {
   CardHeader,
   CardTitle,
 } from "../../components/ui/card";
-import { FaLink } from "react-icons/fa6";
+
 import {
   Tabs,
   TabsContent,
@@ -33,23 +16,13 @@ import {
 } from "../../components/ui/tabs";
 import Overview from "./components/overview";
 import { RecentSales } from "./components/recent-sales";
-import TeamSwitcher from "./components/team-switcher";
-import UserNav from "./components/user-nav";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-  DialogFooter,
-} from "../../components/ui/dialog";
+
 import LineChartpage from "./components/lineChart";
+import NavBar from "../../components/navBar";
 
 function DashboardPage() {
   const [qrValue, setQrValue] = useState();
 
-  const defaultPageURL = "https://votre-domaine.com/page-par-defaut";
   return (
     <div className="">
       <div className="md:hidden">
@@ -73,7 +46,16 @@ function DashboardPage() {
               <div className="w-1"></div>
               <Dialog>
                 <DialogTrigger className="flex justify-center">
-                  <FaLink size={25} />
+                  <Button
+                    variant="ghost"
+                    className="relative h-8 w-8 rounded-full "
+                  >
+                    <Avatar className="h-8 w-8">
+                      <AvatarFallback>
+                        <FaLink size={22} />
+                      </AvatarFallback>
+                    </Avatar>
+                  </Button>
                 </DialogTrigger>
                 <DialogContent>
                   <DialogHeader>
@@ -105,8 +87,8 @@ function DashboardPage() {
                 </DialogContent>
               </Dialog>
 
-              <TeamSwitcher />
-              <DropdownMenu>
+              {/* <TeamSwitcher /> */}
+              {/* <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button
                     variant="ghost"
@@ -137,10 +119,11 @@ function DashboardPage() {
                     />
                   </div>
                 </DropdownMenuContent>
-              </DropdownMenu>
+              </DropdownMenu> */}
             </div>
           </div>
         </div>
+        >>>>>>> 9a76157056c1bd7c533de09b80f3319a06ad5a74
         <div className="flex-1 space-y-4 p-8 pt-6">
           <div className="flex items-center justify-between space-y-2">
             <h2 className="text-3xl font-bold tracking-tight">Dashboard</h2>
@@ -155,6 +138,7 @@ function DashboardPage() {
               {/* <Button>Download</Button> */}
             </div>
           </div>
+
           <Tabs defaultValue="overview" className="space-y-4">
             {/* <TabsList>
               <TabsTrigger value="overview">Overview</TabsTrigger>
@@ -283,7 +267,7 @@ function DashboardPage() {
                 </Card>
                 <Card className="col-span-3">
                   <CardHeader>
-                    <CardTitle>Last 10 Orders</CardTitle>
+                    <CardTitle>Best Orders</CardTitle>
                     <CardDescription>
                       You made 265 sales this month.
                     </CardDescription>
@@ -295,7 +279,20 @@ function DashboardPage() {
               </div>
             </TabsContent>
           </Tabs>
-          <LineChartpage />
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-7">
+            <Card className="col-span-3">
+              <CardHeader>
+                <CardTitle>Last 10 Orders</CardTitle>
+                <CardDescription>
+                  You made 265 sales this month.
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <RecentSales />
+              </CardContent>
+            </Card>
+            <LineChartpage />
+          </div>
         </div>
       </div>
     </div>

@@ -1,7 +1,8 @@
-import * as React from "react"
-import { Slot } from "@radix-ui/react-slot"
+import * as React from "react";
+import { Slot } from "@radix-ui/react-slot";
 import { cva } from "class-variance-authority";
 
+import { cn } from "@/lib/utils";
 import { cn } from "@/lib/utils"
 
 // Définition des variantes de bouton
@@ -32,15 +33,32 @@ const buttonVariants = cva(
       size: "default",
     },
   }
-)
+);
 
 // Définition du composant Button
+const Button = React.forwardRef(
+  ({ className, variant, size, asChild = false, ...props }, ref) => {
+    const Comp = asChild ? Slot : "button";
+    return (
+      <Comp
+        className={cn(
+          buttonVariants({ variant, size, className }),
+          "border-black"
+        )}
+        style={{ backgroundColor: "black", color: "white" }} // Style en ligne
+        ref={ref}
+        {...props}
+      />
+    );
+  }
+);
+Button.displayName = "Button";
 const Button = React.forwardRef(({ className, variant, size, asChild = false, ...props }, ref) => {
   const Comp = asChild ? Slot : "button"
   return (
     <Comp
-      className={cn(buttonVariants({ variant, size, className }), "border-black")}
-      style={{ backgroundColor: "black", color: "white" }} // Style en ligne
+      className={cn(buttonVariants({ variant, size, className }), "border-black bg-black")}
+      style={{ color: "white",backgroundColor:"black" }} 
       ref={ref}
       {...props}
     />
@@ -48,4 +66,4 @@ const Button = React.forwardRef(({ className, variant, size, asChild = false, ..
 })
 Button.displayName = "Button"
 
-export { Button, buttonVariants }
+export { Button, buttonVariants };

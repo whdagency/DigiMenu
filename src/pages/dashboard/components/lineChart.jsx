@@ -41,7 +41,7 @@ const data = [
 
 function LineChartpage() {
   return (
-    <Card>
+    <Card className="col-span-4">
       <CardHeader>
         <CardTitle>visitors number & orders</CardTitle>
         <CardDescription>
