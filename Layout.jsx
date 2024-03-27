@@ -25,18 +25,18 @@ function Layout() {
   const navigate = useNavigate(); // Utiliser la fonction de navigation
   // const { expanded } = useContext(SidebarContext);
 
-  useEffect(() => {
-    // Vérifiez si l'utilisateur est déjà authentifié lors du chargement de la page
-    const isUserAuthenticated = localStorage.getItem("authenticated");
-    if (isUserAuthenticated === "true") {
-      setAuthenticated(true);
-    }
-  }, []);
+//   useEffect(() => {
+//     // Vérifiez si l'utilisateur est déjà authentifié lors du chargement de la page
+//     const isUserAuthenticated = localStorage.getItem("authenticated");
+//     if (isUserAuthenticated === "true") {
+//       setAuthenticated(true);
+//     }
+//   }, []);
 
   // Si l'utilisateur n'est pas authentifié, afficher la page de connexion
-  if (!authenticated) {
-    return <Login onLogin={() => setAuthenticated(true)} />;
-  }
+//   if (!authenticated) {
+//     return <Login onLogin={() => setAuthenticated(true)} />;
+//   }
 
   console.log(expanded);
   return (

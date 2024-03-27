@@ -15,14 +15,17 @@ import DemoPage from "../Dishes/page";
 import DemoPageDrink from "../Drinks/page";
 import DemoPagePromotion from "../Promotions/page";
 import DemoPageOrders from "../Orders/page";
+import { Tabs } from "../components/ui/tabs";
+import TabsDemo from "../components/custom/tabs";
 export const router = createBrowserRouter([
   {
     path: "/",
     children: [
-      {
-        path: "/Login",
-        element: <Login />,
-      },
+        {
+          path: "/Login",
+          element: <Login />,
+          // children: [{ index: true, element: <Dashboard /> }],
+        },
       {
         path: "/Dashboard",
         element: <Layout />,
@@ -46,7 +49,7 @@ export const router = createBrowserRouter([
       {
         path: "/QrCode/AddQrCode",
         element: <Layout />,
-        children: [{ index: true, element: <QrCodeform /> }],
+        children: [{ index: true, element: <TabsDemo /> }],
       },
       {
         path: "/Categories",
@@ -78,7 +81,6 @@ export const router = createBrowserRouter([
         element: <Layout />,
         children: [{ index: true, element: <Profile /> }],
       },
-
     ],
   },
 ]);

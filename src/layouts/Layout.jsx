@@ -34,9 +34,9 @@ function Layout() {
   }, []);
 
   // Si l'utilisateur n'est pas authentifié, afficher la page de connexion
-  if (!authenticated) {
-    return <Login onLogin={() => setAuthenticated(true)} />;
-  }
+//   if (!authenticated) {
+//     return <Login onLogin={() => setAuthenticated(true)} />;
+//   }
 
   console.log(expanded);
   return (
