@@ -1,5 +1,7 @@
 import React from 'react'
-import { Input } from '../../components/ui/input'
+// import { Input } from '../../components/ui/input'
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
 // import { ComboboxLanguage } from './custom/language'
 import {
     Select,
@@ -12,17 +14,30 @@ import {
   } from "@/components/ui/select"
 const Profileform = () => {
     return (
-        <div className='p-5 border m-5 rounded-md w-7/12'>
-            <h1 className='border-b-2'>Profile</h1>
-            <div className='w-full flex items-center gap-5 py-10'>
+        <div className='p-5 border m-5 rounded-md w-full '>
+            <h1 className='border-b-2 '>Profile</h1>
+            <div className='w-full flex items-center gap-5 pt-4'>
                 <div className='w-full'>
                     <label >First name:</label>
                     <Input  className='my-3' placeholder='first name...'/>
                 </div>
                 <div className='w-full'>
-                    <label> last name :</label>
+                    <label>Last name :</label>
                     <Input className='my-3' placeholder="last name..."/>
                 </div>
+
+
+            </div>
+            <div className='w-full flex items-center gap-5 '>
+                <div className='w-full'>
+                    <label >Email:</label>
+                    <Input  className='my-3' placeholder='example@gmail.com'/>
+                </div>
+                <div className='w-full'>
+                    <label>Mobile:</label>
+                    <Input className='my-3' placeholder="0675162919"/>
+                </div>
+
 
             </div>
             <div className='w-full '>
@@ -43,9 +58,16 @@ const Profileform = () => {
               </SelectContent>
             </Select>
           </div>
-            {/* <div className='w-full'>
-                    <ComboboxLanguage/>
-            </div> */}
+          <div className="w-full ">
+          <label className='block mb-3 pt-3'>Description :</label>
+                <textarea className="w-full h-40 border rounded-md px-3 py-2" placeholder="Enter your text here..."></textarea>
+            </div>
+            <div className=" w-full ">
+            <label className='block mb-3'>Picture :</label>
+            <Input id="picture" type="file" />
+            </div>
+            {/* <button className='btn border-t-neutral-950'></button> */}
+
         </div>
     )
 }

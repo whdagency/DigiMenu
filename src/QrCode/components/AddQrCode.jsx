@@ -6,7 +6,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../..
 function AddQrCode() {
   return (
     <>
-      <Card className="col-span-3 w-[20%]">
+    
+      <Card className="col-span-3 w-[20%] h-[20%]">
         <CardHeader>
           <CardTitle>Add a QrCode</CardTitle>
           <CardDescription>
@@ -31,7 +32,7 @@ function AddQrCode() {
                 console.log('Icon clicked');
               }}
             >
-              <MdAddBox size={100} style={{ color: '#0f7cf0' }} />
+              <MdAddBox size={50} style={{ color: '#000' }} />
             </button>
           </Link>
         </CardContent>

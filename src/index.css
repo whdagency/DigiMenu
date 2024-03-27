@@ -78,3 +78,11 @@
 .customWidth {
   width: calc(100% - 4rem);
 }
+
+.grid__content{
+    grid-template-columns: 1.5fr 1fr;
+}
+.grid__content__Profile{
+    grid-template-columns: 0fr .97fr;
+    
+}

@@ -3,7 +3,7 @@ import { Input } from '../../components/ui/input';
 
 const FormContact = () => {
     return (
-        <div className='p-5 border m-5 rounded-md col-span-3'>
+        <div className='p-5 border m-5 rounded-md'>
             <div>
                 <h1 className='border-b-2' style={{ alignSelf: 'flex-start' }}>Contact</h1>
                 <div className='flex flex-col space-y-5 mt-5 justify-center items-center'>

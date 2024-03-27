@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils"
 
 // Définition des variantes de bouton
 const buttonVariants = cva(
-  "inline-flex items-center justify-center text-white bg-black whitespace-nowrap rounded-[.5rem] text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
+  "inline-flex items-center justify-center text-black whitespace-nowrap rounded-[.5rem] text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
   {
     variants: {
       variant: {
@@ -39,7 +39,7 @@ const Button = React.forwardRef(({ className, variant, size, asChild = false, ..
   return (
     <Comp
       className={cn(buttonVariants({ variant, size, className }), "border-black bg-black")}
-      style={{ color: "white",backgroundColor:"black" }} 
+      style={{ color: "white",backgroundColor:"black" }}
       ref={ref}
       {...props}
     />

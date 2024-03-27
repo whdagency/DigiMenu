@@ -4,16 +4,14 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Input } from '@/components/ui/input';
 import { Label } from "@/components/ui/label"
 import { SlRefresh } from 'react-icons/sl';
+import { Link } from 'react-router-dom';
 
-function TabsDemo({ qrValue, setQrValue }) {
-    const [tableNames, setTableNames] = useState([{ nom: "53" }]);
+function TabsDemo({ qrValue, setQrValue, tableNames, updateTableNames }) {
     const [names, setNames] = useState("");
 
-
-
     const addToTableNames = () => {
-        setTableNames(prevTableNames => [...prevTableNames, { nom: names }]);
-        setNames(""); 
+        updateTableNames([...tableNames, { nom: names }]);
+        setNames("");
     };
     console.log(tableNames)
     return (
@@ -53,17 +51,21 @@ function TabsDemo({ qrValue, setQrValue }) {
                         <CardTitle>Table specific</CardTitle>
                         <CardDescription>Create a QR code for a specific table</CardDescription>
                     </CardHeader>
-                    <CardContent className="flex items-center justify-center bg-gradient-to-r from-white to-blue-500 h-full">
+                    <CardContent className="flex items-center justify-center  h-full">
                         <div className="grid w-full max-w-sm items-center gap-2 pt-5">
                             {/* Afficher un champ d'entrée pour chaque nom de table */}
                             <Input
                                 type="text"
                                 placeholder="Table name"
+                                maxlength="6"
+                                minlength="2"
                                 value={names}
                                 onChange={(e) => setNames(e.target.value)} // Mis à jour de 'names' avec la valeur de l'entrée
                             />
                             {/* Bouton pour ajouter le nom de la table */}
-                            <button onClick={addToTableNames} className="bg-blue-500 text-white py-2 px-4 rounded">Add to Table</button>
+                            <Link to="/QrCode">
+                            <button onClick={addToTableNames} className="bg-black text-white py-2 px-4 rounded-[.7rem] text-md">Save</button>
+                            </Link>
                         </div>
                     </CardContent>
                 </Card>

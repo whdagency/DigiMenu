@@ -44,7 +44,7 @@ const QrCodeTemplate = ({ setQrValue }) => {
         }
 
     ];
-
+    
     return (
         <div className='border w-[40rem] h-[40rem] rounded-md'>
             <h1 className='p-4 text-2xl '>QR code template</h1>

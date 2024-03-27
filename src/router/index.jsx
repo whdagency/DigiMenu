@@ -7,8 +7,14 @@ import Report from "../Report/page"
 import Company from "../Company/page"
 import Profile from "../Profile/page"
 import QrCode from "../QrCode/page"
+import Dishes from "../Dishes/page"
+import Drinks from "../Drinks/page"
 import AddQrCode from "../QrCode/components/AddQrCode";
 import QrCodeform from "../QrCode/components/QrCodeform";
+import DemoPage from "../Dishes/page";
+import DemoPageDrink from "../Drinks/page";
+import DemoPagePromotion from "../Promotions/page";
+import DemoPageOrders from "../Orders/page";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -28,6 +34,11 @@ export const router = createBrowserRouter([
         children: [{ index: true, element: <Report /> }],
       },
       {
+        path: "/Orders",
+        element: <Layout />,
+        children: [{ index: true, element: < DemoPageOrders/> }],
+      },
+      {
         path: "/QrCode",
         element: <Layout />,
         children: [{ index: true, element: <QrCode /> }],
@@ -43,6 +54,21 @@ export const router = createBrowserRouter([
         children: [{ index: true, element: <Categories /> }],
       },
       {
+        path: "/Dishes",
+        element: <Layout />,
+        children: [{ index: true, element: <DemoPage /> }],
+      },
+      {
+        path: "/Drinks",
+        element: <Layout />,
+        children: [{ index: true, element: <DemoPageDrink /> }],
+      },
+      {
+        path: "/Promotions",
+        element: <Layout />,
+        children: [{ index: true, element: <DemoPagePromotion /> }],
+      },
+      {
         path: "/Company",
         element: <Layout />,
         children: [{ index: true, element: <Company /> }],
@@ -52,6 +78,7 @@ export const router = createBrowserRouter([
         element: <Layout />,
         children: [{ index: true, element: <Profile /> }],
       },
+
     ],
   },
 ]);

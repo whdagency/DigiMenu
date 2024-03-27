@@ -4,7 +4,7 @@ import ComboboxDemo from '../../components/custom/combobox'
 
 const FormLocation = () => {
   return (
-    <div className=' w-7/12 p-5 h-96  border m-5 rounded-md'>
+    <div className=' w-full p-5 h-96  border m-5 rounded-md'>
       <h1 className='border-b-2'>Location</h1>
       <div className='flex flex-col md:flex-row w-full py-5 gap-5 items-center'>
         <div className='w-full'>

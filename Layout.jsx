@@ -199,13 +199,13 @@ function Layout() {
 
             {/* ${expanded ? "ml-64" : "ml-16"} */}
 
-            <main
+            {/* <main
               className={`p-4 col-span-1 w-full ${
                 expanded ? "ml-64" : "ml-16"
               } transition-all duration-200`}
             >
               <Outlet />
-            </main>
+            </main> */}
           </div>
         </header>
       </SidebarContext.Provider>

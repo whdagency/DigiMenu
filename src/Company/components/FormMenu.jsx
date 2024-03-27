@@ -14,7 +14,7 @@ import { GrCurrency } from "react-icons/gr";
 
 const FormMenu = () => {
   return (
-    <div className=' w-7/12 p-5 h-96  border m-5 rounded-md'>
+    <div className=' w-full p-5 h-96  border m-5 rounded-md'>
       <h1 className='border-b-2'>Menu</h1>
       <div className=''>
         <div className='flex flex-col md:flex-row w-full py-5 gap-5 items-center'>

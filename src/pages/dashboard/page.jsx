@@ -82,9 +82,9 @@ function DashboardPage() {
                 <DialogContent>
                   <DialogHeader>
                     <DialogTitle
-                      style={{ display: "flex", alignItems: "center" }}
+                      style={{ display: "flex", alignItems: "center",justifyContent:"center" }}
                     >
-                      <span style={{ marginRight: "0.5rem" }}>Your Menu</span>{" "}
+                      <span style={{ marginRight: "0.5rem" ,}}>Your Menu</span>{" "}
                       <MdRestaurantMenu size={20} />
                     </DialogTitle>
                     <DialogDescription>
@@ -97,7 +97,7 @@ function DashboardPage() {
                       </div>
                     </DialogDescription>
                   </DialogHeader>
-                  <DialogFooter className="flex justify-center items-center">
+                  <DialogFooter className="flex !justify-center items-center">
                     {/* Lien vers votre page par défaut avec le domaine personnalisé */}
                     <a
                       href={defaultPageURL}
