@@ -4,7 +4,7 @@ import { ColorPicker } from "primereact/colorpicker";
 
 // import "react-device-frameset/styles/marvel-devices.min.css";
 import "./page.css";
-
+import Header from '../pages/header';
 const backgroundColors = [
   { color: "#E72929", colorName: "Red" },
   { color: "#FB6D48", colorName: "Orange" },
@@ -70,6 +70,8 @@ export default function Menu() {
   };
 
   return (
+    <>
+    <Header/>
     <div className="hidden flex-col md:flex">
       <div className="flex-1 space-y-4 p-8 pt-6">
         <div className="flex items-center justify-between space-y-2">
@@ -301,5 +303,6 @@ export default function Menu() {
         </div>
       </div>
     </div>
+    </>
   );
 }

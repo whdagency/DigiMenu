@@ -10,6 +10,7 @@ import Login from "../authentification/page.jsx";
 import { CiBoxes } from "react-icons/ci";
 import { LiaGlassMartiniAltSolid } from "react-icons/lia";
 import { GrSort } from "react-icons/gr";
+import { BiCommentError } from "react-icons/bi";
 import "../index.css";
 
 function Layout() {
@@ -61,16 +62,9 @@ function Layout() {
                 <SidebarItem icon={<RiPieChartLine size={20} />} text="Report" />
             </Link>
             <Link to="/Orders">
-                <SidebarItem icon={<CiBoxes size={22} />} text="Orders" />
+                <SidebarItem icon={<CiBoxes size={26} />} text="Orders" />
             </Link>
               <hr className="my-3" />
-              <SidebarItem
-                icon={
-                 <GrSort size={18}/>
-                }
-                text="Arrangement"
-                alert
-              />
               <Link to="/Menu">
               <SidebarItem
                 icon={
@@ -92,6 +86,17 @@ function Layout() {
                 text="Menu"
               />
               </Link>
+              <Link to="/Arrangement">
+                <SidebarItem
+                icon={
+                 <GrSort size={18}/>
+                }
+                text="Arrangement"
+                alert
+              />
+              </Link>
+
+
               <Link to="/QrCode">
               <SidebarItem
                 icon={
@@ -118,7 +123,7 @@ function Layout() {
                 text="Qr Codes"
               />
               </Link>
-
+              <Link to="/Users">
               <SidebarItem
                 icon={
                   <svg
@@ -138,6 +143,7 @@ function Layout() {
                 }
                 text="Users"
               />
+              </Link>
               <hr className="my-3" />
               <Link to="/Categories">
               <SidebarItem
@@ -169,6 +175,12 @@ function Layout() {
               <SidebarItem icon={<BsMegaphone size={20} />} text="Promotions" />
               </Link>
               <hr className="my-3" />
+              <Link to="/Reclamations">
+              <SidebarItem
+                icon={<BiCommentError size={20} />}
+                text="Reclamations"
+              />
+              </Link>
               <Link to="/Company">
               <SidebarItem
                 icon={<Settings size={20} />}
@@ -202,9 +214,9 @@ function Layout() {
             {/* ${expanded ? "ml-64" : "ml-16"} */}
 
             <main
-              className={`p-4 col-span-1 w-full ${
+              className={`p-4 col-span-1 w-full  ${
                 expanded ? "ml-64" : "ml-16"
-              } transition-all duration-200`}
+              } transition-all duration-200 `}
             >
               <Outlet />
             </main>

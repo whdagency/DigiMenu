@@ -3,7 +3,7 @@ import TabsDemo from '../../components/custom/tabs';
 import { HiOutlineArrowDownOnSquare } from 'react-icons/hi2';
 import Header from '../../pages/header';
 
-const QrCodeform = () => {
+const Userform = () => {
     const [qrValue, setQrValue] = useState(undefined);
     const [tableNames, setTableNames] = useState([{ nom: "53" }]);
 
@@ -14,7 +14,7 @@ const QrCodeform = () => {
 
     return (
         <React.Fragment>
-            <Header />
+            <Header /> 
             <div className="flex flex-col items-center justify-center h-screen">
                 <h1 className='text-center p-3'>Download or print the QR code that your customers can scan to consult your menu. More on our Help page.</h1>
                 <div className='flex-1 space-y-4 p-8 pt-6'>
@@ -33,4 +33,4 @@ const QrCodeform = () => {
     );
 }
 
-export default QrCodeform;
+export default Userform;

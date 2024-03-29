@@ -27,23 +27,7 @@ export const columns = [
         header: "TEXT",
       },
 
-      {
-        accessorKey: "available",
-        header: "AVAILABLE",
-        cell: ({ row }) => {
-            const [isAvailable, setIsAvailable] = useState(row.getValue("available"));
-
-            const handleToggleChange = () => {
-                setIsAvailable(!isAvailable);
-            };
-
-            return (
-                <div className="capitalize">
-                    <Switch onClick={handleToggleChange} checked={isAvailable} />
-                </div>
-            );
-        },
-    },
+      
     {
         accessorKey: "visible",
         header: "VISIBLE",

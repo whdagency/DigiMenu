@@ -74,6 +74,9 @@
     @apply bg-background text-foreground;
   }
 }
+body{
+    background-color: #FBFBFB;
+}
 
 .customWidth {
   width: calc(100% - 4rem);
@@ -84,5 +87,13 @@
 }
 .grid__content__Profile{
     grid-template-columns: 0fr .97fr;
-    
+
+}
+
+
+#qrcode-id-unique{
+    width: 60px !important;
+    height: 60px !important;
+    max-width: max-content;
+    margin-inline: auto;
 }

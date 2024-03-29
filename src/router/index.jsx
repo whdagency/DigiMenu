@@ -18,6 +18,12 @@ import DemoPageOrders from "../Orders/page";
 import { Tabs } from "../components/ui/tabs";
 import TabsDemo from "../components/custom/tabs";
 import Menu from '../Menu/page'
+import Users from "../Users/page";
+import Userform from "../Users/components/QrCodeform";
+import Catform from "../Categories/components/QrCodeform";
+import Reclamations from "../Reclamations/page";
+import Arrangement from "../Arrangement/page"
+import ArrangementChild from "../Arrangement/arrangementChild/page"
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -43,6 +49,14 @@ export const router = createBrowserRouter([
         children: [{ index: true, element: < DemoPageOrders/> }],
       },
       {
+        path: "/Arrangement",
+        element: <Layout />,
+        children: [
+          { index: true, element: <Arrangement /> },
+          { path: "/Arrangement/:id", element: <ArrangementChild /> },
+        ],
+      },
+      {
         path: "/Menu",
         element: <Layout />,
         children: [{ index: true, element: < Menu/> }],
@@ -55,12 +69,27 @@ export const router = createBrowserRouter([
       {
         path: "/QrCode/AddQrCode",
         element: <Layout />,
-        children: [{ index: true, element: <TabsDemo /> }],
+        children: [{ index: true, element: <QrCodeform /> }],
+      },
+      {
+        path: "/Users",
+        element: <Layout />,
+        children: [{ index: true, element: <Users /> }],
+      },
+      {
+        path: "/Users/AddUser",
+        element: <Layout />,
+        children: [{ index: true, element: <Userform /> }],
       },
       {
         path: "/Categories",
         element: <Layout />,
         children: [{ index: true, element: <Categories /> }],
+      },
+      {
+        path: "/Categories/AddCategories",
+        element: <Layout />,
+        children: [{ index: true, element: <Catform /> }],
       },
       {
         path: "/Dishes",
@@ -76,6 +105,11 @@ export const router = createBrowserRouter([
         path: "/Promotions",
         element: <Layout />,
         children: [{ index: true, element: <DemoPagePromotion /> }],
+      },
+      {
+        path: "/Reclamations",
+        element: <Layout />,
+        children: [{ index: true, element: <Reclamations /> }],
       },
       {
         path: "/Company",

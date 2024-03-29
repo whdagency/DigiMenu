@@ -4,6 +4,7 @@ import { DataTable } from "./data-table"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from '@/components/ui/card'
 import React ,{useState} from 'react';
+import Header from '../pages/header';
 async function getData() {
   // Fetch data from your API here.
   return [
@@ -27,7 +28,7 @@ const data= [
         name: "Laptop Dell",
         groups: 2,
         price: 55,
-        available: true,
+        
         visible: false,
 
     },
@@ -37,7 +38,7 @@ const data= [
         name: "PlayStation",
         groups: 5,
         price: 35,
-        available: true,
+        
         visible: true
     },
     {
@@ -46,7 +47,7 @@ const data= [
         name: "Mobile Samsung Galaxy S23",
         groups: 2,
         price: 75,
-        available: true,
+        
         visible: true
     },
     {
@@ -55,7 +56,7 @@ const data= [
         name: "Gaming PC",
         groups: 2,
         price: 60,
-        available: true,
+        
         visible: true
     },
     {
@@ -64,7 +65,7 @@ const data= [
         name: "Mac",
         groups: 2,
         price: 55,
-        available: true,
+        
         visible: true
     },
     {
@@ -73,7 +74,7 @@ const data= [
         name: "Smart Watch",
         groups: 4,
         price: 55,
-        available: true,
+        
         visible: true
     },
     {
@@ -82,7 +83,7 @@ const data= [
         name: "XBox",
         groups: 5,
         price: 45,
-        available: true,
+        
         visible: true
     },
     {
@@ -91,7 +92,7 @@ const data= [
         name: "IPad",
         groups: 2,
         price: 55,
-        available: true,
+        
         visible: true
     },
     {
@@ -100,7 +101,7 @@ const data= [
         name: "Ear Buds",
         groups: 2,
         price: 66,
-        available: true,
+        
         visible: true
     },
     {
@@ -109,16 +110,20 @@ const data= [
         name: "SSD",
         groups: 2,
         price: 55,
-        available: true,
+        
         visible: true
     }
 ]
   console.log(data)
   const [isOpen, setIsOpen] = useState(true);
   return (
-    <div className="container mx-auto py-10">
+    <>
+    <Header/>
+<div className="container mx-auto py-10">
 
       <DataTable columns={columns} data={data} />
     </div>
+    </>
+
   )
 }

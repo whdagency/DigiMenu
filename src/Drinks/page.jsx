@@ -4,6 +4,7 @@ import { DataTable } from "./data-table"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from '@/components/ui/card'
 import React ,{useState} from 'react';
+import Header from '../pages/header';
 async function getData() {
   // Fetch data from your API here.
   return [
@@ -116,9 +117,13 @@ const data= [
   console.log(data)
   const [isOpen, setIsOpen] = useState(true);
   return (
-    <div className="container mx-auto py-10">
+    <>
+    <Header/>
+ <div className="container mx-auto py-10">
 
       <DataTable columns={columns} data={data} />
     </div>
+    </>
+
   )
 }

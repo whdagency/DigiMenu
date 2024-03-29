@@ -1,13 +1,18 @@
-import { createContext, useContext } from 'react';
+import React, { createContext } from 'react'
+const stateContext=createContext({
+    tab:[],
+    setTab:()=>{},
+});
+function Context({children}) {
+    const [tableNames, setTableNames] = useState([]);
+  return (
+    <stateContext.Provide value={{
+        tab,
+        setTab,
+    }}>
+        {children}
+    </stateContext.Provide>
+  )
+}
 
-const MyContext = createContext(null);
-
-export const useMyContext = () => {
-  const context = useContext(MyContext);
-  if (!context) {
-    throw new Error('useMyContext must be used within a MyContextProvider');
-  }
-  return context;
-};
-
-export default MyContext;
+export default Context

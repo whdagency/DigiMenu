@@ -4,8 +4,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Input } from '@/components/ui/input';
 import { UserContext } from '../../QrCode/components/AddQrCode';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-
-function TabsDemo({ qrValue, setQrValue }) {
+import { SlRefresh } from "react-icons/sl"
+function TabsDemoCustom({ qrValue, setQrValue }) {
     const defaultPageURL = "https://votre-domaine.com/page-par-defaut";
     const [names, setNames] = useState("");
     const user = useContext(UserContext);
@@ -30,14 +30,15 @@ function TabsDemo({ qrValue, setQrValue }) {
         {/* <Link to="/QrCode" className="bg-blue-500 text-white py-2 px-4 rounded-md mb-4">Back to QrCode</Link> */}
                     <br/>
                     <Tabs defaultValue="menu" className="w-[25rem] mx-auto">
-                        <TabsList className="grid w-full grid-cols-2">
-                            <TabsTrigger value="menu" className="text-blue-500">Menu</TabsTrigger>
-                            <TabsTrigger value="password">Table specific</TabsTrigger>
-                        </TabsList>
+
+
+                            <h3 className='text-center text-lg font-semibold'>Custom QrCode</h3>
+
+
                         <TabsContent value="menu">
                             <Card>
                                 <CardHeader>
-                                    <CardTitle className="flex justify-between items-center">Menu</CardTitle>
+                                <CardTitle className="flex justify-between items-center">Menu <SlRefresh onClick={() => setQrValue('')} className="w-6 h-6 text-blue-600 cursor-pointer" /></CardTitle>
                                     <CardDescription>Make generate to your code Qr here.</CardDescription>
                                 </CardHeader>
                                 {qrValue ? (
@@ -57,29 +58,7 @@ function TabsDemo({ qrValue, setQrValue }) {
                                 )}
                             </Card>
                         </TabsContent>
-                        <TabsContent value="password">
-                            <Card>
-                                <CardHeader>
-                                    <CardTitle>Table specific</CardTitle>
-                                    <CardDescription>Create a QR code for a specific table</CardDescription>
-                                </CardHeader>
-                                <CardContent className="flex items-center justify-center  h-full">
-                                    <div className="grid w-full max-w-sm items-center gap-2 pt-5">
-                                        <Input
-                                            type="text"
-                                            placeholder="Table name"
-                                            maxLength={6}
-                                            minLength={2}
-                                            value={names}
-                                            onChange={(e) => setNames(e.target.value)}
-                                        />
-                                        <Link to="/QrCode" state={{value: {names}}}>
-                                        <button onClick={addToTableNames} className="bg-black text-white py-2 px-4 rounded-[.7rem] text-md">Save</button>
-                                    </Link>
-                                    </div>
-                                </CardContent>
-                            </Card>
-                        </TabsContent>
+
                     </Tabs>
                  {/* </div>
         </div>
@@ -88,4 +67,4 @@ function TabsDemo({ qrValue, setQrValue }) {
     );
 }
 
-export default TabsDemo;
+export default TabsDemoCustom;

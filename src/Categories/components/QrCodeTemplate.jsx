@@ -1,5 +1,4 @@
 import React from 'react'
-import { QRCode } from 'react-qrcode-logo'
 
 const data = [
     {
@@ -11,7 +10,7 @@ const data = [
         style2: "w-full bg-blue-500 h-14 rounded-b-lg"
     },
     {
-        id: 2,
+        id: 2, 
         head: "table",
         img: "https://media.istockphoto.com/id/828088276/fr/vectoriel/code-qr-illustration.jpg?s=612x612&w=0&k=20&c=3HruJu6JLgPsHstpZ5p43XkqqvP5c7AzJ7qwZ8KGgG4=",
         footer: "screen here",
@@ -74,12 +73,7 @@ const QrCodeTemplate = ({ setQrValue }) => {
                 <div className='grid grid-cols-3 gap-4  '>
                     <div className="w-full bg-white h-32 border rounded-md  cursor-pointer shadow-xl p-5 py-2  ">
                         <h1 className='text-center text-sm'>table</h1>
-                        <QRCode
-      id="qrcode-id-unique"
-      value="https://fadadoussama.com/"
-      logoImage="/Logos/qrcode-logo.png"
-      logoWidth={40}
-    />
+                        <img className="w-16 h-16 m-auto" src="https://media.istockphoto.com/id/828088276/fr/vectoriel/code-qr-illustration.jpg?s=612x612&w=0&k=20&c=3HruJu6JLgPsHstpZ5p43XkqqvP5c7AzJ7qwZ8KGgG4=" alt="" />
                         <h1 className='text-center text-sm'>screen here</h1>
                     </div>
                     {
@@ -88,13 +82,7 @@ const QrCodeTemplate = ({ setQrValue }) => {
                                 <div key={item.id} onClick={() => setQrValue(item)} className="w-full bg-white h-32 border rounded-md  cursor-pointer shadow-xl p-5 py-2 ">
                                     <div className={item.style1}>
                                         <h1 className='text-center text-sm'>{item.head}</h1>
-                                        <QRCode
-                                            id="qrcode-id-unique"
-                                            value="https://fadadoussama.com/"
-                                            logoImage="/Logos/qrcode-logo.png"
-                                            logoWidth={4}
-                                            className="w-48 h-48 m-auto"
-                                            />
+                                        <img className="w-16 h-16 m-auto" src={item.img} alt="" />
                                         <h1 className={`text-center text-sm ${item.id === 4 ? "text-black" : "text-white"}`}>{item.footer}</h1>
                                     </div>
                                     <div className={item.style2}></div>

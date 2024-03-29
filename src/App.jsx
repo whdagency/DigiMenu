@@ -3,11 +3,15 @@ import { useState } from "react";
 import { RouterProvider } from "react-router-dom";
 import { router } from "./router/index";
 import Login from "./authentification/page";
+import Context from "./context/Context";
 
 function App() {
   return (
     <>
-      <RouterProvider router={router}></RouterProvider>
+    {/* <Context> */}
+<RouterProvider router={router}></RouterProvider>
+    {/* </Context> */}
+
     </>
   );
 }

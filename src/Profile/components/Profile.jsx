@@ -12,9 +12,10 @@ import {
     SelectTrigger,
     SelectValue,
   } from "@/components/ui/select"
+import { Button } from '../../components/ui/button'
 const Profileform = () => {
     return (
-        <div className='p-5 border m-5 rounded-md w-full '>
+        <div className='p-5 border m-5 rounded-md w-full h-'>
             <h1 className='border-b-2 '>Profile</h1>
             <div className='w-full flex items-center gap-5 pt-4'>
                 <div className='w-full'>
@@ -66,7 +67,10 @@ const Profileform = () => {
             <label className='block mb-3'>Picture :</label>
             <Input id="picture" type="file" />
             </div>
-            {/* <button className='btn border-t-neutral-950'></button> */}
+            <div className=" w-full p-4 justify-end">
+            <Button>Save</Button>
+            </div>
+
 
         </div>
     )
