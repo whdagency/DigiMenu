@@ -14,10 +14,12 @@ class RoleController extends Controller
      */
     public function index()
     {
-        //
+        $roles = Role::all(); // Retrieves all roles from the database
         return response()->json([
-            "message" => "User Created"
-        ]);
+            'status' => true,
+            'message' => 'Roles retrieved successfully',
+            'roles' => $roles
+        ], Response::HTTP_OK);
     }
 
     /**
@@ -67,16 +69,37 @@ class RoleController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
         //
+        $role = Role::findOrFail($id); // Find the role by ID or fail
+
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255|unique:roles,name,' . $role->id, // Exclude the current role from the unique check
+        ]);
+    
+        $role->update($validatedData); // Update the role
+    
+        return response()->json([
+            'status' => true,
+            'message' => 'Role updated successfully',
+            'role' => $role
+        ], Response::HTTP_OK);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
         //
+        $role = Role::findOrFail($id); // Find the role by ID or fail
+
+        $role->delete(); // Delete the role
+    
+        return response()->json([
+            'status' => true,
+            'message' => 'Role deleted successfully'
+        ], Response::HTTP_OK);
     }
 }

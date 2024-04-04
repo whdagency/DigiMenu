@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Models\User;
+use App\Models\Super;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -10,9 +10,9 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
-class UserController extends Controller
+class SuperController extends Controller
 {
-    /**
+   /**
      * Create User
      * @param Request $request
      * @return User 
@@ -26,7 +26,6 @@ class UserController extends Controller
                 'first_name' => 'required',
                 'last_name' => 'required',
                 'email' => 'required|email|unique:users,email',
-                'username' => 'required|string|unique:users,username',
                 'password' => 'required',
                 'role_id' => 'required|exists:roles,id'
             ]);
@@ -39,10 +38,9 @@ class UserController extends Controller
                 ], 401);
             }
 
-            $user = User::create([
+            $user = Super::create([
                 'first_name' => $request->first_name,
                 'last_name' => $request->last_name,
-                'username' => $request->username,
                 'phone' => $request->phone,
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
@@ -70,7 +68,7 @@ class UserController extends Controller
      */
     public function getAllUsers()
     {
-        $users = User::all(); // Retrieve all users from the database
+        $users = Super::all(); // Retrieve all users from the database
         return response()->json([
             'status' => true,
             'message' => 'Users retrieved successfully',
@@ -88,13 +86,12 @@ class UserController extends Controller
     public function updateUser(Request $request, $id)
     {
         try {
-            $user = User::findOrFail($id);
+            $user = Super::findOrFail($id);
 
             $validateData = Validator::make($request->all(), [
                 'first_name' => 'sometimes|required',
                 'last_name' => 'sometimes|required',
                 'email' => 'sometimes|required|email|unique:users,email,' . $user->id,
-                'username' => 'sometimes|required|unique:users,username,' . $user->id,
                 'password' => 'sometimes|required',
                 'role_id' => 'sometimes|required|exists:roles,id'
             ]);
@@ -134,7 +131,7 @@ class UserController extends Controller
     public function deleteUser($id)
     {
         try {
-            $user = User::findOrFail($id);
+            $user = Super::findOrFail($id);
 
             // Delete the user
             $user->delete();
@@ -155,57 +152,71 @@ class UserController extends Controller
     /**
      * Login The User
      * @param Request $request
-     * @return User
+     * @return Super
      */
+    // public function loginUser(Request $request)
+    // {
+    //     try {
+    //         $validateUser = Validator::make($request->all(), 
+    //         [
+    //         'email' => 'required|email',
+    //         'password' => 'required',
+    //         ]);
+
+    //         if($validateUser->fails()){
+    //             return response()->json([
+    //                 'status' => false,
+    //                 'message' => 'validation error',
+    //                 'errors' => $validateUser->errors()
+    //             ], 401);
+    //         }
+
+    //         $credentials = $validateUser->validated();
+    
+    //         if(!Auth::attempt($credentials)){
+    //             return response()->json([
+    //                 'status' => false,
+    //                 'message' => 'Email or Password does not match with our record.',
+    //             ], 401);
+    //         }
+
+            
+    //         // $user = User::where('email', $request->email)->first();
+    //         $super = Auth::user(); // Get the authenticated super
+    //         $token = $super->createToken('SuperToken')->plainTextToken; 
+    //         return response()->json([
+    //             'status' => true,
+    //             'message' => 'Super logged in successfully',
+    //             'super' => $super,
+    //             'token' => $token,
+    //         ], 200);
+
+    //     } catch (\Throwable $th) {
+    //         return response()->json([
+    //             'status' => false,
+    //             'message' => $th->getMessage()
+    //         ], 500);
+    //     }
+    // }
+
     public function loginUser(Request $request)
-    {
-        try {
-            $validateUser = Validator::make($request->all(), 
-            [
-                // 'email' => 'required|email',
-                'login' => 'required',
-                'password' => 'required'
+        {
+            $request->validate([
+                'email' => 'required|email',
+                'password' => 'required',
             ]);
 
-            if($validateUser->fails()){
-                return response()->json([
-                    'status' => false,
-                    'message' => 'validation error',
-                    'errors' => $validateUser->errors()
-                ], 401);
-            }
-
-            $fieldType = filter_var($request->login, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
-            $credentials = [$fieldType => $request->login, 'password' => $request->password];
-    
-            if(!Auth::attempt($credentials)){
-                return response()->json([
-                    'status' => false,
-                    'message' => 'Email or Username or Password does not match with our record.',
-                ], 401);
-            }
-
+            // Check if the user exists with given email
             // $user = User::where('email', $request->email)->first();
-            $user = Auth::user();
-            return response()->json([
-                'status' => true,
-                'message' => 'User Logged In Successfully',
-                'token' => $user->createToken("API TOKEN")->plainTextToken
-            ], 200);
+            $super = Super::where('email', $request->email)->first();
 
-        } catch (\Throwable $th) {
-            return response()->json([
-                'status' => false,
-                'message' => $th->getMessage()
-            ], 500);
+            // Verify user or super and create token accordingly
+            if ($super && Hash::check($request->password, $super->password)) {
+                $token = $super->createToken('SuperToken')->plainTextToken;
+                return response()->json(['status' => true, 'message' => 'Super logged in successfully', 'super' => $super, 'token' => $token], 200);
+            }
+
+            return response()->json(['status' => false, 'message' => 'Credentials do not match our records.'], 401);
         }
-    }
 
-    public function fetchTest()
-    {
-        # code...
-        return response()->json([
-            "message" => "User Created"
-        ]);
-    }
 }
