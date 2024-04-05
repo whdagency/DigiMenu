@@ -5,6 +5,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\RoleController;
 use App\Http\Controllers\Api\SuperController;
+use App\Http\Controllers\Api\RestoController;
+use App\Http\Controllers\Api\StaffController;
+use App\Http\Controllers\Api\CategorieController;
 
 Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
     return $request->user();
@@ -33,3 +36,14 @@ Route::post('/super/login', [SuperController::class, 'loginUser']);
 Route::get('/supers', [SuperController::class, 'getAllUsers']);
 Route::put('/super/{role}', [SuperController::class, 'updateUser']);
 Route::delete('/super/{id}', [SuperController::class, 'deleteUser']);
+
+
+// RESTO
+Route::apiResource('restos', RestoController::class);
+
+
+// STAFF
+Route::apiResource('staffs', StaffController::class);
+
+// Categories
+Route::apiResource('categories', CategorieController::class);
