@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext, createContext } from "react";
 import { Outlet, useNavigate ,Link} from "react-router-dom";
-import Sidebar, { SidebarContext, SidebarItem } from "../pages/SideBar.jsx";
+import Sidebar, {  SidebarItem } from "../pages/SideBar.jsx";
 import { BiDrink } from "react-icons/bi";
 import { BiDish } from "react-icons/bi";
 import { BsMegaphone } from "react-icons/bs";
@@ -11,7 +11,12 @@ import { CiBoxes } from "react-icons/ci";
 import { LiaGlassMartiniAltSolid } from "react-icons/lia";
 import { GrSort } from "react-icons/gr";
 import { BiCommentError } from "react-icons/bi";
+import NavBar from "../pages/dashboard/navBar.jsx";
 import "../index.css";
+
+
+export const SidebarContext = createContext();
+
 
 function Layout() {
   const [expanded, setExpanded] = useState(true);
@@ -65,7 +70,7 @@ function Layout() {
                 <SidebarItem icon={<CiBoxes size={26} />} text="Orders" />
             </Link>
               <hr className="my-3" />
-              <Link to="/Menu">
+              {/* <Link to="/Menu">
               <SidebarItem
                 icon={
                   <svg
@@ -94,7 +99,7 @@ function Layout() {
                 text="Arrangement"
                 alert
               />
-              </Link>
+              </Link> */}
 
 
               <Link to="/QrCode">
@@ -214,10 +219,11 @@ function Layout() {
             {/* ${expanded ? "ml-64" : "ml-16"} */}
 
             <main
-              className={`p-4 col-span-1 w-full  ${
+              className={` col-span-1 w-full  ${
                 expanded ? "ml-64" : "ml-16"
               } transition-all duration-200 `}
             >
+                <NavBar/>
               <Outlet />
             </main>
           </div>

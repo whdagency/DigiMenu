@@ -5,7 +5,7 @@ function cn(...classNames) {
 }
 
 const Table = React.forwardRef(({ className, ...props }, ref) => (
-  <div className="relative w-full overflow-auto">
+  <div className="relative w-full overflow-auto bg-white">
     <table
       ref={ref}
       className={cn("w-full caption-bottom text-sm", className)}

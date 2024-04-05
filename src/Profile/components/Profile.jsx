@@ -9,13 +9,13 @@ import {
     SelectGroup,
     SelectItem,
     SelectLabel,
-    SelectTrigger,
+    SelectTrigger, 
     SelectValue,
   } from "@/components/ui/select"
 import { Button } from '../../components/ui/button'
 const Profileform = () => {
     return (
-        <div className='p-5 border m-5 rounded-md w-full h-'>
+        <div className='p-5 border m-5 rounded-[15px] w-full bg-white'>
             <h1 className='border-b-2 '>Profile</h1>
             <div className='w-full flex items-center gap-5 pt-4'>
                 <div className='w-full'>

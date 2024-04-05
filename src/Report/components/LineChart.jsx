@@ -52,9 +52,9 @@ function CardsStats() {
       <Card className="col-span-3">
       <CardHeader>
         <CardTitle>Revenue</CardTitle>
-        <CardDescription>
+        {/* <CardDescription>
           Your exercise minutes are ahead of where you normally are.
-        </CardDescription>
+        </CardDescription> */}
       </CardHeader>
         <CardContent>
 

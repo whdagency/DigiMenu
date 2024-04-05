@@ -14,74 +14,37 @@ import { GrCurrency } from "react-icons/gr";
 
 const FormMenu = () => {
   return (
-    <div className=' w-full p-5 h-96  border m-5 rounded-md'>
-      <h1 className='border-b-2'>Menu</h1>
+    <div className=' w-full p-5 h-auto border m-5 rounded-md bg-white' >
+      <h1 className='border-b-2'>About</h1>
       <div className=''>
         <div className='flex flex-col md:flex-row w-full py-5 gap-5 items-center'>
           <div className='w-full md:w-1/2'>
-            <label className=''>Location name :</label>
-            <Input className='mt-3' placeholder='Entreprise' />
+            <label className=''>Name :</label>
+            <Input className='mt-3' placeholder='name' type="text"/>
           </div>
           <div className='w-full md:w-1/2'>
-            <label className='block mb-3'>Location :</label>
-            <Select>
-              <SelectTrigger className="w-full">
-                <SelectValue placeholder="Restaurant" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectGroup>
-                  <SelectLabel>Restaurant</SelectLabel>
-                  <SelectItem value="apple">Pomme</SelectItem>
-                  <SelectItem value="banana">Banane</SelectItem>
-                  <SelectItem value="blueberry">Myrtille</SelectItem>
-                  <SelectItem value="grapes">Raisin</SelectItem>
-                  <SelectItem value="pineapple">Ananas</SelectItem>
-                </SelectGroup>
-              </SelectContent>
-            </Select>
+            <label className='block mb-3'>Logo :</label>
+            <Input id="example1" type="file" class="block w-full text-sm file:mr-4 file:rounded-md file:border-0 file:bg-neutral-500 file:py-2.5 file:px-4 file:text-sm file:font-semibold file:text-white hover:file:bg-primary-700 focus:outline-none disabled:pointer-events-none disabled:opacity-60" />
           </div>
         </div>
-        <div className='flex flex-col md:flex-row w-full py-5 gap-5 items-center'>
-          <div className='w-full md:w-1/2'>
-            <label className='block mb-3'>Language menu :</label>
-            <Select>
-              <SelectTrigger className="w-full">
-                <SelectValue placeholder="Langues" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectGroup>
-                  <SelectLabel>Langues</SelectLabel>
-                  <SelectItem value="english">Anglais</SelectItem>
-                  <SelectItem value="french">Français</SelectItem>
-                  <SelectItem value="spanish">Espagnol</SelectItem>
-                  <SelectItem value="german">Allemand</SelectItem>
-                  <SelectItem value="chinese">Chinois</SelectItem>
-                </SelectGroup>
-              </SelectContent>
-            </Select>
+        <div className='flex flex-col md:flex-row w-full  gap-5 items-center'>
+          <div className='w-full md:w-full'>
+            <label className='block mb-3'>Description :</label>
+            <Input className='mt-3' placeholder='description' type="text"/>
           </div>
+        </div>
+        <div className='w-full md:w-full'>
+            <label className='block mb-3'>Cover Photo :</label>
+            <Input id="example1" type="file" class="block w-full text-sm file:mr-4 file:rounded-md file:border-0 file:bg-neutral-500 file:py-2.5 file:px-4 file:text-sm file:font-semibold file:text-white hover:file:bg-primary-700 focus:outline-none disabled:pointer-events-none disabled:opacity-60" />
+
+          </div>
+          <div className='w-full md:w-full'>
+            <label className='block mb-3'>Adress :</label>
+            <Input className='mt-3' placeholder='Adress' type="text"/>
+          </div>
+        <div className='flex flex-col md:flex-row w-full py-5 gap-5 items-center'>
           <div className='w-full md:w-1/2'>
             <label className='block mb-3'>Currency :</label>
-            <Select>
-              <SelectTrigger className="w-full">
-                <SelectValue placeholder="$" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectGroup>
-                  <SelectLabel>$</SelectLabel>
-                  <SelectItem value="usd">USD</SelectItem>
-                  <SelectItem value="eur">EUR</SelectItem>
-                  <SelectItem value="gbp">GBP</SelectItem>
-                  <SelectItem value="jpy">JPY</SelectItem>
-                  <SelectItem value="cny">CNY</SelectItem>
-                </SelectGroup>
-              </SelectContent>
-            </Select>
-          </div>
-        </div>
-        <div className='flex flex-col md:flex-row w-full py-5 gap-5 items-center'>
-          <div className='w-full md:w-1/2'>
-            <label className='block mb-3'>Payement method :</label>
             <Select>
               <SelectTrigger className="w-full">
                 <SelectValue placeholder="Méthode de paiement" />
@@ -99,20 +62,16 @@ const FormMenu = () => {
             </Select>
           </div>
           <div className='w-full md:w-1/2'>
-            <label className='block mb-3'>System of measurement :</label>
-            <Select>
-              <SelectTrigger className="w-full">
-                <SelectValue placeholder="Métrique" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectGroup>
-                  <SelectLabel>Métrique</SelectLabel>
-                  <SelectItem value="metric">Métrique</SelectItem>
-                  <SelectItem value="imperial">Impérial</SelectItem>
-                </SelectGroup>
-              </SelectContent>
-            </Select>
+            <label className='block mb-3'>Wifi password :</label>
+            <Input id="picture" type="text" className='mt-3' placeholder="wifi"/>
           </div>
+        </div>
+        <div>
+            <label for="example7" className="mb-1 block text-sm font-medium text-gray-700">Website</label>
+            <div className="relative z-0 flex">
+                <div className="inset-y-0 left-0 flex items-center rounded-md rounded-r-none border border-r-0 border-gray-300 bg-gray-100 px-2.5 text-gray-700">https://</div>
+                <Input type="url" id="example7" className="block w-full rounded-md rounded-l-none border border-gray-300 shadow-sm focus:z-10 focus:border-primary-400 focus:ring focus:ring-primary-200 focus:ring-opacity-50 disabled:cursor-not-allowed disabled:bg-gray-50 disabled:text-gray-500" placeholder="example.com" />
+            </div>
         </div>
       </div>
     </div>

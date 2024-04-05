@@ -14,6 +14,7 @@ import {
   DialogTrigger,
   DialogFooter,
 } from "../components/ui/dialog";
+
 import { QRCode } from 'react-qrcode-logo';
 
 const QrCode = () => {
@@ -34,45 +35,18 @@ const QrCode = () => {
 
     return (
         <>
-            <div className="border-b ">
-                <div className="flex h-16 items-center px-4">
-                    <div className="ml-auto flex items-center space-x-8" dir="rtl">
-                        <UserNav />
-                        <div className="w-1"></div>
-                        <Dialog>
-                            <DialogTrigger className="flex justify-center">
-                                <Button variant="ghost" className="relative h-8 w-8 rounded-full ">
-                                    <FaLink size={22} />
-                                </Button>
-                            </DialogTrigger>
-                            <DialogContent>
-                                <DialogHeader>
-                                    <DialogTitle style={{ display: "flex", alignItems: "center" }}>
-                                        <span style={{ marginRight: "0.5rem" }}>Your Menu</span>{" "}
-                                        <MdRestaurantMenu size={20} />
-                                    </DialogTitle>
-                                    <DialogDescription>
-                                        <div className="m-5 ml-10 flex mt-10 gap-10 ">
-                                        <QRCode
-                                            className="qr__code-style"
-                                            id="qrcode-id-unique"
-                                            value="https://fadadoussama.com/"
-                                            logoImage="/Logos/qrcode-logo.png"
-                                            logoWidth={4}
-
-                                            />
-                                        </div>
-                                    </DialogDescription>
-                                </DialogHeader>
-                                <DialogFooter className="flex justify-center items-center">
-                                    <a href={defaultPageURL} className="text-blue-500 hover:underline">
-                                        {defaultPageURL}
-                                    </a>
-                                </DialogFooter>
-                            </DialogContent>
-                        </Dialog>
-                    </div>
-                </div>
+            <div className="flex items-center justify-between space-y-2 p-4">
+            <h2 className="text-3xl font-bold tracking-tight">Qr Code</h2>
+            <div
+              className="flex items-center space-x-2 "
+              style={{
+                backgroundColor: "black",
+                color: "white",
+                borderRadius: ".5rem",
+              }}
+            >
+              <Button>Download</Button>
+</div>
             </div>
             <div className="flex-1 space-y-4 p-8 pt-6">
                 <AddQrCode tableNames={memoizedTableNames} />

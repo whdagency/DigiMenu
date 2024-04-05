@@ -37,8 +37,8 @@ const DonutChartHero = () => (
     <div className="mx-auto space-y-12">
       <div className="space-y-3">
       <CardHeader>
-        <CardTitle>The Best Categories</CardTitle> {/* Titre du composant Card */}
-        <CardDescription>Your exercise minutes are ahead of where you normally are.</CardDescription> {/* Description du composant Card */}
+        <CardTitle>Top performing Categories</CardTitle> {/* Titre du composant Card */}
+        {/* <CardDescription>Your exercise minutes are ahead of where you normally are.</CardDescription> Description du composant Card */}
       </CardHeader>
         <div className="flex justify-center">
           <DonutChart

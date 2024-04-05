@@ -4,8 +4,8 @@
     display: flex;
     justify-content: center;
     width: 350px;
-    background-color: #f9f9f9;
-    border: solid 1px rgb(231, 231, 231);
+    background-color: #ffffff;
+    /* border: solid 1px rgb(231, 231, 231); */
     cursor: pointer;
     transition: all 0.5s;
     border-radius: 15px; /* Add border radius */

@@ -5,7 +5,7 @@ import { FaFacebookSquare, FaTiktok } from 'react-icons/fa'
 
 const SocialMedia = () => {
     return (
-        <div className='p-5 border m-5 rounded-md'>
+        <div className='p-5 border m-5 rounded-md bg-white'>
             <h1 className='border-b-2'>Social Media</h1>
             <div>
                 <div className='flex items-center m-5'>

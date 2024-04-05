@@ -12,8 +12,8 @@ import Drinks from "../Drinks/page"
 import AddQrCode from "../QrCode/components/AddQrCode";
 import QrCodeform from "../QrCode/components/QrCodeform";
 import DemoPage from "../Dishes/page";
-import DemoPageDrink from "../Drinks/page";
-import DemoPagePromotion from "../Promotions/page";
+import DemoPageDrink from "../Drinkss/page";
+import DemoPagePromotion from "../Promootions/page";
 import DemoPageOrders from "../Orders/page";
 import { Tabs } from "../components/ui/tabs";
 import TabsDemo from "../components/custom/tabs";
@@ -24,6 +24,8 @@ import Catform from "../Categories/components/QrCodeform";
 import Reclamations from "../Reclamations/page";
 import Arrangement from "../Arrangement/page"
 import ArrangementChild from "../Arrangement/arrangementChild/page"
+import DashboardCompany from "../Coompany/page";
+import DashboardProfile from "../Proofile/page";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -114,12 +116,17 @@ export const router = createBrowserRouter([
       {
         path: "/Company",
         element: <Layout />,
-        children: [{ index: true, element: <Company /> }],
+        children: [{ index: true, element: <DashboardCompany/> }],
       },
+    //   {
+    //     path: "/Profile",
+    //     element: <Layout />,
+    //     children: [{ index: true, element: <Profile /> }],
+    //   },
       {
         path: "/Profile",
         element: <Layout />,
-        children: [{ index: true, element: <Profile /> }],
+        children: [{ index: true, element: <DashboardProfile /> }],
       },
     ],
   },

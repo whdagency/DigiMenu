@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 
 import { Button } from "../../components/ui/button";
+
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -25,6 +26,7 @@ import {
   CardTitle,
 } from "../../components/ui/card";
 import { FaLink } from "react-icons/fa6";
+import { IoQrCodeOutline } from "react-icons/io5";
 import {
   Tabs,
   TabsContent,
@@ -33,7 +35,9 @@ import {
 } from "../../components/ui/tabs";
 import Overview from "./components/overview";
 import { RecentSales } from "./components/recent-sales";
+import {RecentSalesOrders} from "./components/recent-sales-orders"
 import TeamSwitcher from "./components/team-switcher";
+import { RiListUnordered } from "react-icons/ri";
 import UserNav from "./components/user-nav";
 import {
   Dialog,
@@ -66,88 +70,11 @@ function DashboardPage() {
       </div>
 
       <div className="hidden flex-col md:flex">
-        <div className="border-b ">
-          <div className="flex h-16 items-center px-4">
-            <div className="ml-auto flex items-center space-x-8" dir="rtl">
-              <UserNav />
-              <div className="w-1"></div>
-              <Dialog>
-                <DialogTrigger className="flex justify-center">
-                <Button variant="ghost" className="relative h-8 w-8 rounded-full ">
-                <Avatar className="h-8 w-8">
-                <AvatarFallback><FaLink size={22} /></AvatarFallback>
-                </Avatar>
-                </Button>
-                </DialogTrigger>
-                <DialogContent>
-                  <DialogHeader>
-                    <DialogTitle
-                      style={{ display: "flex", alignItems: "center",justifyContent:"center" }}
-                    >
-                      <span style={{ marginRight: "0.5rem" ,}}>Your Menu</span>{" "}
-                      <MdRestaurantMenu size={20} />
-                    </DialogTitle>
-                    <DialogDescription>
-                      <div className="m-5 ml-10 flex mt-10 gap-10 ">
-                        <img
-                          className="w-19 h-19 m-auto"
-                          src="https://media.istockphoto.com/id/828088276/fr/vectoriel/code-qr-illustration.jpg?s=612x612&w=0&k=20&c=3HruJu6JLgPsHstpZ5p43XkqqvP5c7AzJ7qwZ8KGgG4="
-                          alt=""
-                        />
-                      </div>
-                    </DialogDescription>
-                  </DialogHeader>
-                  <DialogFooter className="flex !justify-center items-center">
-                    {/* Lien vers votre page par défaut avec le domaine personnalisé */}
-                    <a
-                      href={defaultPageURL}
-                      className="text-blue-500 hover:underline"
-                    >
-                      {defaultPageURL}
-                    </a>
-                  </DialogFooter>
-                </DialogContent>
-              </Dialog>
 
-              {/* <TeamSwitcher /> */}
-              {/* <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button
-                    variant="ghost"
-                    className="relative h-8 w-8 rounded-full "
-                  >
-                    <Avatar className="h-8 w-8">
-                      <AvatarImage src="/avatars/01.png" alt="@shadcn" />
-                      <AvatarFallback>
-                        <FaLink size={25} />
-                      </AvatarFallback>
-                    </Avatar>
-                  </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent
-                  className="w-56 flex flex-col items-center"
-                  align="end"
-                  forceMount
-                >
-                  <div className="flex items-center mt-5">
-                    <MdRestaurantMenu size={20} />
-                    <span style={{ marginLeft: "0.5rem" }}>Your Menu</span>
-                  </div>
-                  <div className="m-5 mt-10 flex gap-10">
-                    <img
-                      className="w-19 h-19"
-                      src="https://media.istockphoto.com/id/828088276/fr/vectoriel/code-qr-illustration.jpg?s=612x612&w=0&k=20&c=3HruJu6JLgPsHstpZ5p43XkqqvP5c7AzJ7qwZ8KGgG4="
-                      alt=""
-                    />
-                  </div>
-                </DropdownMenuContent>
-              </DropdownMenu> */}
-            </div>
-          </div>
-        </div>
         <div className="flex-1 space-y-4 p-8 pt-6">
           <div className="flex items-center justify-between space-y-2">
             <h2 className="text-3xl font-bold tracking-tight">Dashboard</h2>
+
             <div
               className="flex items-center space-x-2 "
               style={{
@@ -158,7 +85,11 @@ function DashboardPage() {
             >
               {/* <Button>Download</Button> */}
             </div>
+
           </div>
+          <p className="pl-2 text-lg text-muted-foreground">
+                    Overview 30 days
+                    </p>
           <Tabs defaultValue="overview" className="space-y-4">
             {/* <TabsList>
               <TabsTrigger value="overview">Overview</TabsTrigger>
@@ -177,31 +108,8 @@ function DashboardPage() {
                 <Card>
                   <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                     <CardTitle className="text-sm font-medium">
-                      visitors number
+                      Visitors Number
                     </CardTitle>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      className="h-4 w-4 text-muted-foreground"
-                    >
-                      <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
-                    </svg>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="text-2xl font-bold">45231</div>
-                    <p className="text-xs text-muted-foreground">
-                      +20.1% from last month
-                    </p>
-                  </CardContent>
-                </Card>
-                <Card>
-                  <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                    <CardTitle className="text-sm font-medium">Sales</CardTitle>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 24 24"
@@ -218,16 +126,28 @@ function DashboardPage() {
                     </svg>
                   </CardHeader>
                   <CardContent>
+                    <div className="text-2xl font-bold">45231</div>
+                    {/* <p className="text-xs text-muted-foreground">
+                      +20.1% from last month
+                    </p> */}
+                  </CardContent>
+                </Card>
+                <Card>
+                  <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                    <CardTitle className="text-sm font-medium">Orders</CardTitle>
+                    <RiListUnordered className="h-4 w-4 text-muted-foreground"/>
+                  </CardHeader>
+                  <CardContent>
                     <div className="text-2xl font-bold">2350</div>
-                    <p className="text-xs text-muted-foreground">
+                    {/* <p className="text-xs text-muted-foreground">
                       +180.1% from last month
-                    </p>
+                    </p> */}
                   </CardContent>
                 </Card>
                 <Card>
                   <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                     <CardTitle className="text-sm font-medium">
-                      Total items
+                      Total Items
                     </CardTitle>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -245,41 +165,30 @@ function DashboardPage() {
                   </CardHeader>
                   <CardContent>
                     <div className="text-2xl font-bold">12,234</div>
-                    <p className="text-xs text-muted-foreground">
+                    {/* <p className="text-xs text-muted-foreground">
                       +19% from last month
-                    </p>
+                    </p> */}
                   </CardContent>
                 </Card>
                 <Card>
                   <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                     <CardTitle className="text-sm font-medium">
-                      Total QR Codes
+                      QR Codes
                     </CardTitle>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      className="h-4 w-4 text-muted-foreground"
-                    >
-                      <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
-                    </svg>
-                  </CardHeader>
+                    <IoQrCodeOutline className="h-4 w-4 text-muted-foreground"/>
+                    </CardHeader>
                   <CardContent>
                     <div className="text-2xl font-bold">573</div>
-                    <p className="text-xs text-muted-foreground">
+                    {/* <p className="text-xs text-muted-foreground">
                       +201 since last hour
-                    </p>
+                    </p> */}
                   </CardContent>
                 </Card>
               </div>
               <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-7">
                 <Card className="col-span-4">
                   <CardHeader>
-                    <CardTitle>Overview 30d Orders</CardTitle>
+                    <CardTitle>Last 30 days Orders</CardTitle>
                   </CardHeader>
                   <CardContent className="pl-2">
                     <Overview />
@@ -287,10 +196,10 @@ function DashboardPage() {
                 </Card>
                 <Card className="col-span-3">
                   <CardHeader>
-                    <CardTitle>Best Orders</CardTitle>
-                    <CardDescription>
+                    <CardTitle>Best seller items</CardTitle>
+                    {/* <CardDescription>
                       You made 265 sales this month.
-                    </CardDescription>
+                    </CardDescription> */}
                   </CardHeader>
                   <CardContent>
                     <RecentSales />
@@ -304,12 +213,13 @@ function DashboardPage() {
           <Card className="col-span-3">
                   <CardHeader>
                     <CardTitle>Last 10 Orders</CardTitle>
-                    <CardDescription>
-                      You made 265 sales this month.
-                    </CardDescription>
+
                   </CardHeader>
                   <CardContent>
-                    <RecentSales />
+
+                    <RecentSalesOrders />
+
+
                   </CardContent>
                 </Card>
                 <LineChartpage />

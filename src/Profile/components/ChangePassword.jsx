@@ -3,7 +3,7 @@ import { Input } from '../../components/ui/input'
 
 const ChangePassword = () => {
     return (
-        <div className="card mt-4 mb-4 flex justify-center">
+        <div className="card mt-4 mb-4 flex justify-center bg-white">
             {/* <div className=" p-4"> */}
         <div className='p-5  m-5 rounded-[15px] w-[350px] '>
             <h1 className='border-b-2'>Security</h1>

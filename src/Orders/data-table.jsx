@@ -111,7 +111,7 @@ export function DataTable({
             </SelectContent>
           </Select>
         </div>
-                <Dialog className=" p-8 shadow-lg h-[45rem] w-[65rem] rounded-xl">
+                {/* <Dialog className=" p-8 shadow-lg h-[45rem] w-[65rem] rounded-xl">
                 <DialogTrigger className="flex justify-center">
                 <Button variant="ghost" className="relative h-8 w-8 rounded-full bg-white ">
                 <FaCirclePlus
@@ -161,7 +161,7 @@ export function DataTable({
                   <DialogFooter className="flex justify-center items-center">
                   </DialogFooter>
                 </DialogContent>
-              </Dialog>
+              </Dialog> */}
 
                 </div>
             </div>
@@ -226,6 +226,7 @@ export function DataTable({
           size="sm"
           onClick={() => table.previousPage()}
           disabled={!table.getCanPreviousPage()}
+          className="bg-zinc-800"
         >
           Previous
         </Button>
@@ -234,6 +235,7 @@ export function DataTable({
           size="sm"
           onClick={() => table.nextPage()}
           disabled={!table.getCanNextPage()}
+          className="bg-black"
         >
           Next
         </Button>

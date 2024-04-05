@@ -27,7 +27,7 @@ export const columns = [
         header: "TEXT",
       },
 
-      
+
     {
         accessorKey: "visible",
         header: "VISIBLE",

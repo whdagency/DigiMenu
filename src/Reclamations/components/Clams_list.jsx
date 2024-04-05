@@ -35,14 +35,21 @@ export function MailList({ items }) {
             }
           >
             <div className="flex w-full flex-col gap-1">
-              <div className="flex items-center">
-                <div className="flex items-center gap-2">
+              <div className="flex justify-between"style={{justifyContent:"space-between"}}>
+                <div className="flex items-center gap-2 ">
 
-                  <div className="font-semibold">{item.name}</div>
+
+                  <Avatar>
+      <AvatarImage src="https://th.bing.com/th/id/OIP.2hAVCZRMcBjsE8AGQfWCVQHaHa?rs=1&pid=ImgDetMain" alt="@shadcn" className="h-8 w-8"/>
+      <AvatarFallback>CN</AvatarFallback>
+    </Avatar>
+    <div className="font-semibold">{item.name}</div>
                   {!item.read && (
                     <span className="flex h-2 w-2 rounded-full bg-blue-600" />
                   )}
+
                 </div>
+
                 <div
                   className={cn(
                     "ml-auto text-xs",
@@ -54,14 +61,15 @@ export function MailList({ items }) {
                   {/* {formatDistanceToNow(new Date(item.date), {
                     addSuffix: true,
                   })} */}
+                  <div className="text-neutral-500">5 months ago</div>
                 </div>
               </div>
-              <div className="text-xs font-medium">{item.subject}</div>
+              {/* <div className="text-xs font-medium">{item.subject}</div> */}
             </div>
             <div className="line-clamp-2 text-xs text-muted-foreground">
               {item.text.substring(0, 300)}
             </div>
-            {item.labels.length ? (
+            {/* {item.labels.length ? (
               <div className="flex items-center gap-2">
                 {item.labels.map((label) => (
                   <Badge key={label} >
@@ -69,7 +77,7 @@ export function MailList({ items }) {
                   </Badge>
                 ))}
               </div>
-            ) : null}
+            ) : null} */}
           </button>
         ))}
       </div>
@@ -78,8 +86,8 @@ export function MailList({ items }) {
 }
 
 // function getBadgeVariantFromLabel(
-//   label: string
-// ): ComponentProps<typeof Badge>["variant"] {
+//   label
+// ) {
 //   if (["work"].includes(label.toLowerCase())) {
 //     return "default"
 //   }

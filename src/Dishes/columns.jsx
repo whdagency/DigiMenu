@@ -1,6 +1,19 @@
 
 import {useState} from "react"
 import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from '@/components/ui/select'
+
+import {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+    DialogFooter,
+  } from "@/components/ui/dialog";
+  import { Label } from "@/components/ui/label"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -9,9 +22,13 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import { BiSolidEdit } from "react-icons/bi";
+import { BiSolidTrash } from "react-icons/bi";
+import { MdErrorOutline } from "react-icons/md";
 import { ArrowUpDown, MoreHorizontal } from "lucide-react"
 import { IoCheckmarkOutline } from "react-icons/io5"
 import { Switch } from '@/components/ui/switch'
+import UpdateForm from "./updateForm";
 export const columns = [
     {
         accessorKey: "image",
@@ -27,14 +44,13 @@ export const columns = [
         header: "NAME",
       },
       {
-        accessorKey: "groups",
-        header: "Groups",
+        accessorKey: "categories",
+        header: "CATEGORIES",
       },
       {
         accessorKey: "price",
         header: "PRICE",
       },
-      
     {
         accessorKey: "visible",
         header: "VISIBLE",
@@ -60,8 +76,11 @@ export const columns = [
     cell: ({ row }) => {
       const payment = row.original
 
+      const [updateFormState, setUpdateFormState] = useState(false);
+
       return (
-        <DropdownMenu>
+        <>
+        {/* <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="ghost" className="h-8 w-8 p-0">
               <span className="sr-only">Open menu</span>
@@ -70,26 +89,47 @@ export const columns = [
           </DropdownMenuTrigger>
           <DropdownMenuContent align="center">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
-            <DropdownMenuItem
-              onClick={() => navigator.clipboard.writeText(payment.id)}
-            >
-              Update
-            </DropdownMenuItem>
-
-            <DropdownMenuItem>Delete</DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>View details</DropdownMenuItem>
+            <DropdownMenuItem onSelect={() => setUpdateFormState(true)}>Update</DropdownMenuItem>
+            <DropdownMenuItem>Delete</DropdownMenuItem>
+
           </DropdownMenuContent>
-        </DropdownMenu>
+        </DropdownMenu> */}
+        <div className="flex gap-2">
+        <Button onClick={() => setUpdateFormState(true)} >
+            <BiSolidEdit size={20}/>
+        </Button>
+
+
+            <Dialog className="items-center justify-center">
+      <DialogTrigger asChild>
+        <Button variant="outline" className="bg-black"><BiSolidTrash size={20}/></Button>
+      </DialogTrigger>
+
+  <DialogContent className="sm:max-w-[425px] items-center justify-center ">
+    <DialogHeader className="items-center justify-center ">
+    <MdErrorOutline size={80}/>
+      <DialogTitle className="flex items-center text-[1.7rem]"> Are you sure ?</DialogTitle>
+    </DialogHeader>
+    <div className="grid gap-4 py-4">
+      <div className="grid grid-cols-2 items-center gap-4">
+        <Button>Yes</Button>
+        <Button>No</Button>
+      </div>
+    </div>
+  </DialogContent>
+
+
+    </Dialog>
+        </div>
+
+
+
+        <UpdateForm updateFormState={updateFormState} setUpdateFormState={setUpdateFormState} />
+        </>
       )
     },
   },
-  // ...
 ]
-
-
-
-// This type is used to define the shape of our data.
-// You can use a Zod schema here if you want.
 
 

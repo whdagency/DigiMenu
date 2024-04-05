@@ -50,12 +50,13 @@ function AddQrCode({props}) {
         <CardContent>
         <div className="m-5 ml-10 flex mt-0 gap-10 ">
         <QRCode
-      id="qrcode-id-unique"
-      value="https://fadadoussama.com/"
-      logoImage="/Logos/qrcode-logo.png"
-      logoWidth={40}
-    />
-                                        </div>
+            id="qrcode-id-unique"
+            value="https://fadadoussama.com/"
+            logoImage="/Logos/qrcode-logo.png"
+            logoWidth={40}
+            className="w-64 h-64"
+         />
+        </div>
         </CardContent>
       </Card>
       </button>
@@ -64,7 +65,7 @@ function AddQrCode({props}) {
       <div className='m-5 ml-10 flex mt-10 gap-10 '>
                 <QrCodeTemplate setQrValue={setQrValue}/>
                 <div>
-                    <TabsDemoCustom qrValue={qrValue} setQrValue={setQrValue} />
+                    <TabsDemoCustom qrValue={qrValue} setQrValue={setQrValue}/>
 
                 </div>
             </div>
@@ -74,8 +75,25 @@ function AddQrCode({props}) {
 
         </div>)
         :null}
-
+         <Card className="w-[250px] h-[250px]">
+        <CardHeader  className="text-center">
+          <CardTitle>Menu</CardTitle>
+        </CardHeader>
+        <CardContent>
+        <div className="m-5 ml-10 flex mt-0 gap-10 ">
+        <QRCode
+            id="qrcode-id-unique"
+            value="https://fadadoussama.com/"
+            logoImage="/Logos/qrcode-logo.png"
+            logoWidth={40}
+            className="w-64 h-64"
+         />
+        </div>
+        </CardContent>
+      </Card>
         <Link to="/QrCode/AddQrCode">
+            <div className='flex gap-4'>
+
             <Card className="w-[250px] h-[250px] border-dashed grid place-content-center">
                 <CardHeader className="text-center">
                 <CardTitle>Add a QrCode</CardTitle>
@@ -113,6 +131,7 @@ function AddQrCode({props}) {
                 </UserContext.Provider>
                 </CardContent>
             </Card>
+            </div>
         </Link>
     </div>
   );

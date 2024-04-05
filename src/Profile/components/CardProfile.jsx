@@ -6,7 +6,7 @@ import "./CardProfile.css";
 
 const CardProfile = () => {
     return (
-        <div className=" mt-4 mb-4 flex justify-center">
+        <div className=" mt-4 mb-4 flex justify-center bg-white">
             <div className="card p-4">
                 <div className="image flex flex-col justify-center items-center">
                     <button className="btn btn-secondary border overflow-hidden bg-neutral-300 flex justify-center items-center">

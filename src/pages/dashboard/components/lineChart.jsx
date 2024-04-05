@@ -43,10 +43,8 @@ function LineChartpage() {
   return (
     <Card className="col-span-4">
       <CardHeader>
-        <CardTitle>visitors number & orders</CardTitle>
-        <CardDescription>
-          Your exercise minutes are ahead of where you normally are.
-        </CardDescription>
+        <CardTitle>Visitors number & Orders</CardTitle>
+       
       </CardHeader>
       <CardContent className="pb-4">
         <div className="h-[200px]">

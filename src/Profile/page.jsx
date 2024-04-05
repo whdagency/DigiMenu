@@ -6,7 +6,7 @@ import Header from '../pages/header';
 const Profile = () => {
   return (
     <>
-<Header/>
+
 <div className='grid grid__content__Profile gap-4'>
         <CardProfile/>
         <Profileform/>

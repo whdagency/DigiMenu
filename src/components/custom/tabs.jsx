@@ -29,12 +29,12 @@ function TabsDemo({ qrValue, setQrValue }) {
                  <div> */}
         {/* <Link to="/QrCode" className="bg-blue-500 text-white py-2 px-4 rounded-md mb-4">Back to QrCode</Link> */}
                     <br/>
-                    <Tabs defaultValue="menu" className="w-[25rem] mx-auto">
-                        <TabsList className="grid w-full grid-cols-2">
+                    <Tabs defaultValue="password" className="w-[25rem] mx-auto">
+                        {/* <TabsList className="grid w-full grid-cols-2">
                             <TabsTrigger value="menu" className="text-blue-500">Menu</TabsTrigger>
                             <TabsTrigger value="password">Table specific</TabsTrigger>
-                        </TabsList>
-                        <TabsContent value="menu">
+                        </TabsList> */}
+                        {/* <TabsContent value="menu">
                             <Card>
                                 <CardHeader>
                                     <CardTitle className="flex justify-between items-center">Menu</CardTitle>
@@ -56,7 +56,7 @@ function TabsDemo({ qrValue, setQrValue }) {
                                     </CardContent>
                                 )}
                             </Card>
-                        </TabsContent>
+                        </TabsContent> */}
                         <TabsContent value="password">
                             <Card>
                                 <CardHeader>
@@ -64,7 +64,7 @@ function TabsDemo({ qrValue, setQrValue }) {
                                     <CardDescription>Create a QR code for a specific table</CardDescription>
                                 </CardHeader>
                                 <CardContent className="flex items-center justify-center  h-full">
-                                    <div className="grid w-full max-w-sm items-center gap-2 pt-5">
+                                    <div className="grid w-full max-w-sm items-center gap-2 pt-5 ">
                                         <Input
                                             type="text"
                                             placeholder="Table name"
@@ -74,7 +74,7 @@ function TabsDemo({ qrValue, setQrValue }) {
                                             onChange={(e) => setNames(e.target.value)}
                                         />
                                         <Link to="/QrCode" state={{value: {names}}}>
-                                        <button onClick={addToTableNames} className="bg-black text-white py-2 px-4 rounded-[.7rem] text-md">Save</button>
+                                        <button onClick={addToTableNames} className="bg-black text-white py-2 px-4 text-right rounded-[.7rem] text-md">Save</button>
                                     </Link>
                                     </div>
                                 </CardContent>

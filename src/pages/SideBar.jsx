@@ -1,9 +1,7 @@
 import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
 import "./SideBar.css";
 import { createContext, useContext, useState, useEffect } from "react";
-
-// Context pour gérer l'état de la barre latérale
-export const SidebarContext = createContext();
+import { SidebarContext } from "../layouts/Layout";
 
 // Fonction pour récupérer l'élément sélectionné du stockage local
 const getSelectedFromLocalStorage = () => {
@@ -14,7 +12,7 @@ const getSelectedFromLocalStorage = () => {
 // Context pour gérer l'état de la barre latérale
 export default function Sidebar({ children }) {
   const [selectedItem, setSelectedItem] = useState(getSelectedFromLocalStorage);
-  const [expanded, setExpanded] = useState(true);
+  const {expanded, setExpanded} = useContext(SidebarContext);
 
   // Fonction pour basculer l'expansion de la barre latérale
   const toggleExpanded = () => {
@@ -40,9 +38,9 @@ export default function Sidebar({ children }) {
             }`}
             style={{ lineHeight: "50px" }}
           >
-            gar<span className="text-blue-700">i</span>sta
+            gar<span className="text-[#28509E]">i</span>sta
           </h1>
-          <button onClick={toggleExpanded} className="menu-btn">
+          <button onClick={toggleExpanded} className="menu-btn bg-[#28509E]">
             {expanded ? <IoIosArrowBack /> : <IoIosArrowForward />}
           </button>
         </div>
@@ -75,7 +73,7 @@ export function SidebarItem({ icon, text }) {
       className={`relative flex ${
         expanded ? "justify-stretch" : "justify-center"
       } items-center py-2 px-3 my-1 font-medium cursor-pointer rounded-[0.75rem] ${
-        isItemSelected ? "bg-black text-white" : "bg-transparent text-black"
+        isItemSelected ? "bg-[#28509E] text-white" : "bg-transparent text-black"
       } transition-all duration-200 ease-in-out ${
         !isItemSelected && expanded ? "hover:bg-gray-200 hover:text-black" : ""
       }`}

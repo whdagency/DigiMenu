@@ -3,8 +3,10 @@ import { Link } from 'react-router-dom';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Input } from '@/components/ui/input';
 import { UserContext } from '../../QrCode/components/AddQrCode';
+import { BsDownload } from "react-icons/bs";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { SlRefresh } from "react-icons/sl"
+import { QRCode } from 'react-qrcode-logo';
 function TabsDemoCustom({ qrValue, setQrValue }) {
     const defaultPageURL = "https://votre-domaine.com/page-par-defaut";
     const [names, setNames] = useState("");
@@ -43,23 +45,42 @@ function TabsDemoCustom({ qrValue, setQrValue }) {
                                 </CardHeader>
                                 {qrValue ? (
                                     <div className="h-64 p-10 py-5 px-0 pb-0">
-                                        <div className={` ${qrValue?.style1.includes('bg-white') ? 'h-32 w-full bg-white' : 'h-32 w-full bg-blue-500 '}  `}>
-                                            <img className="w-48 h-48 m-auto pt-5" src={qrValue?.img} alt="" />
+                                        <div className={` ${qrValue.idStyle}  `}>
+                                        <QRCode
+                                            id="qrcode-id-unique"
+                                            value="https://fadadoussama.com/"
+                                            logoImage="/Logos/qrcode-logo.png"
+                                            logoWidth={4}
+                                        />
+                                         <h1 className={`text-center text-sm ${qrValue?.id === 4 ? "text-black" : "text-white"}`}>{qrValue?.footer}</h1>
                                         </div>
-                                        <div className={`${qrValue?.style2.includes('bg-blue-500') ? 'w-full bg-blue-500 h-32 rounded-b-lg' : 'w-full bg-white h-32 rounded-b-lg border-2 border-t-0 border-blue-500'} `}></div>
+                                        {/* <div className={`${qrValue?.style2.includes('bg-blue-500') ? 'w-full bg-blue-500 h-32 rounded-b-lg' : 'w-full bg-white h-32 rounded-b-lg border-2 border-t-0 border-blue-500'} `}></div> */}
                                     </div>
                                 ) : (
                                     <CardContent className="space-y-2 p-10 py-5 px-0 pb-0">
-                                        <div className="w-full bg-white h-32">
-                                            <img className="w-48 h-48 m-auto" src="https://media.istockphoto.com/id/828088276/fr/vectoriel/code-qr-illustration.jpg?s=612x612&w=0&k=20&c=3HruJu6JLgPsHstpZ5p43XkqqvP5c7AzJ7qwZ8KGgG4=" alt="" />
-                                        </div>
-                                        <div className="w-full bg-white h-32"></div>
+                                         <div  id={` ${qrValue?.idStyle}  `} className={` ${qrValue?.idStyle}  `}>
+                                    <h1 className='text-center text-sm ' >{qrValue?.head}</h1>
+                                        <QRCode
+                                            id="qrcode-id-unique"
+                                            value="https://fadadoussama.com/"
+                                            logoImage="/Logos/qrcode-logo.png"
+                                            logoWidth={4}
+                                        />
+                                        <h1 className={`text-center text-sm ${qrValue?.id === 4 ? "text-black" : "text-white"}`}>{qrValue?.footer}</h1>
+                                    </div>
                                     </CardContent>
                                 )}
                             </Card>
                         </TabsContent>
 
                     </Tabs>
+                    <div className='mt-20 flex justify-end'>
+                            <button className='px-5 py-2 bg-white text-blue-600 border-2 border-blue-500 flex gap-3 items-center font-normal rounded-md'>
+                                <span>Download</span>
+                                 <BsDownload className='h-6 w-6 ml-3' />
+                            </button>
+
+                        </div>
                  {/* </div>
         </div>
          </div> */}

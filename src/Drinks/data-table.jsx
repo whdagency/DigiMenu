@@ -115,7 +115,7 @@ export function DataTable({
                 <DialogTrigger className="flex justify-center">
                 <Button variant="ghost" className="relative h-8 w-8 rounded-full bg-white ">
                 <FaCirclePlus
-                        className="h-6 w-6 cursor-pointer text-white "/>
+                        className="h-6 w-6 cursor-pointer text-white bg-white"/>
                 </Button>
                 </DialogTrigger>
                 <DialogContent style={{ padding: '2rem', boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)', height: '45rem', width: '65rem', maxWidth: '80rem', borderRadius: '1rem' }}>
